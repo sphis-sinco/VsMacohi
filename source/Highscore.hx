@@ -4,11 +4,7 @@ import flixel.FlxG;
 
 class Highscore
 {
-	#if (haxe >= "4.0.0")
-	public static var songScores:Map<String, Int> = new Map();
-	#else
-	public static var songScores:Map<String, Int> = new Map<String, Int>();
-	#end
+	public static var songScores:Map<String, Int> = [];
 
 
 	public static function saveScore(song:String, score:Int = 0, ?diff:Int = 0):Void
@@ -16,10 +12,8 @@ class Highscore
 		var daSong:String = formatSong(song, diff);
 
 		if (songScores.exists(daSong))
-		{
 			if (songScores.get(daSong) < score)
 				setScore(daSong, score);
-		}
 		else
 			setScore(daSong, score);
 	}
@@ -29,10 +23,8 @@ class Highscore
 		var daWeek:String = formatSong('week' + week, diff);
 
 		if (songScores.exists(daWeek))
-		{
 			if (songScores.get(daWeek) < score)
 				setScore(daWeek, score);
-		}
 		else
 			setScore(daWeek, score);
 	}
