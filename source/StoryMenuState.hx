@@ -382,7 +382,7 @@ class StoryMenuState extends MusicBeatState
 		grpWeekCharacters.members[2].animation.play(weekCharacters[curWeek][2]);
 		txtTracklist.text = "Tracks\n";
 
-		switch (grpWeekCharacters.members[0].animation.curAnim.name)
+		switch (grpWeekCharacters.members[0].animation.name)
 		{
 			case 'parents-christmas':
 				grpWeekCharacters.members[0].offset.set(200, 200);

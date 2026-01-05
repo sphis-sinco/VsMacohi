@@ -40,7 +40,7 @@ class CharacterBase extends FlxSprite
 	{
 		if (!curCharacter.startsWith('bf'))
 		{
-			if (animation.curAnim.name.startsWith('sing'))
+			if (animation.name.startsWith('sing'))
 			{
 				holdTimer += elapsed;
 			}
@@ -59,7 +59,7 @@ class CharacterBase extends FlxSprite
 		switch (curCharacter)
 		{
 			case 'gf':
-				if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
+				if (animation.name == 'hairFall' && animation.curAnim.finished)
 					playAnim('danceRight');
 		}
 
@@ -78,7 +78,7 @@ class CharacterBase extends FlxSprite
 			switch (curCharacter)
 			{
 				case 'gf':
-					if (!animation.curAnim.name.startsWith('hair'))
+					if (!animation.name.startsWith('hair'))
 					{
 						danced = !danced;
 
@@ -89,7 +89,7 @@ class CharacterBase extends FlxSprite
 					}
 
 				case 'gf-christmas':
-					if (!animation.curAnim.name.startsWith('hair'))
+					if (!animation.name.startsWith('hair'))
 					{
 						danced = !danced;
 
@@ -100,7 +100,7 @@ class CharacterBase extends FlxSprite
 					}
 
 				case 'gf-car':
-					if (!animation.curAnim.name.startsWith('hair'))
+					if (!animation.name.startsWith('hair'))
 					{
 						danced = !danced;
 
@@ -110,7 +110,7 @@ class CharacterBase extends FlxSprite
 							playAnim('danceLeft');
 					}
 				case 'gf-pixel':
-					if (!animation.curAnim.name.startsWith('hair'))
+					if (!animation.name.startsWith('hair'))
 					{
 						danced = !danced;
 
@@ -137,34 +137,22 @@ class CharacterBase extends FlxSprite
 	{
 		animation.play(AnimName, Force, Reversed, Frame);
 
-		var daOffset = animOffsets.get(animation.curAnim.name);
-		if (animOffsets.exists(animation.curAnim.name))
-		{
-			offset.set(daOffset[0], daOffset[1]);
-		}
-		else
-			offset.set(0, 0);
+		offset.set(0, 0);
+		if (animOffsets.exists(AnimName))
+			offset.set(animOffsets.get(AnimName)[0], animOffsets.get(AnimName)[1]);
 
 		if (curCharacter == 'gf')
 		{
 			if (AnimName == 'singLEFT')
-			{
 				danced = true;
-			}
 			else if (AnimName == 'singRIGHT')
-			{
 				danced = false;
-			}
 
 			if (AnimName == 'singUP' || AnimName == 'singDOWN')
-			{
 				danced = !danced;
-			}
 		}
 	}
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
-	{
 		animOffsets[name] = [x, y];
-	}
 }

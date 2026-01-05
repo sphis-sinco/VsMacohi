@@ -126,7 +126,9 @@ class Character extends CharacterBase
 			}
 
 			if (a.offsets != null)
-				addOffset(a.name, a.offsets[0], a.offsets[1]);
+				addOffset(a.name, a?.offsets[0] ?? 0, a?.offsets[1] ?? 0);
+			else
+				addOffset(a.name);
 		}
 
 		animation.play('idle');
@@ -136,7 +138,7 @@ class Character extends CharacterBase
 
 	function get_curAnim():String
 	{
-		return animation.curAnim.name;
+		return animation.name;
 	}
 
 	public function getTag(tag:String):CharacterTag

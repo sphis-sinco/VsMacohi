@@ -40,7 +40,7 @@ class AnimationDebug extends FlxState
 
 	override function create()
 	{
-		if (FlxG.sound.music.playing)
+		if (FlxG.sound?.music?.playing)
 			FlxG.sound.music.stop();
 
 		var gridBG:FlxSprite = FlxGridOverlay.create(10, 10);
@@ -119,7 +119,7 @@ class AnimationDebug extends FlxState
 
 	override function update(elapsed:Float)
 	{
-		textAnim.text = char.animation.curAnim.name;
+		textAnim.text = char.animation.name;
 
 		if (FlxG.keys.justPressed.E)
 			FlxG.camera.zoom += 0.25;

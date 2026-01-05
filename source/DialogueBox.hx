@@ -85,7 +85,7 @@ class DialogueBox extends FlxSpriteGroup
 	override function update(elapsed:Float)
 	{
 		if (box.animation.curAnim != null)
-			if (box.animation.curAnim.name == 'normalOpen' && box.animation.curAnim.finished)
+			if (box.animation.name == 'normalOpen' && box.animation.curAnim.finished)
 			{
 				box.animation.play('normal');
 				dialogueOpened = true;
