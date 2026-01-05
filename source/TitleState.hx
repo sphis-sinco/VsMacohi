@@ -42,10 +42,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if (!web)
-		TitleState.soundExt = '.ogg';
-		#end
-
 		PlayerSettings.init();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
