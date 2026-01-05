@@ -1,4 +1,4 @@
-package;
+package debugStates;
 
 import characters.Boyfriend;
 import characters.Character;

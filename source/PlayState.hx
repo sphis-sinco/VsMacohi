@@ -1,5 +1,6 @@
 package;
 
+import debugStates.ChartingState;
 import characters.Boyfriend;
 import characters.Character;
 import flixel.util.typeLimit.OneOfTwo;
