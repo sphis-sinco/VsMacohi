@@ -48,56 +48,26 @@ class Note extends FlxSprite
 
 		var daStage:String = PlayState.curStage;
 
-		switch (daStage)
-		{
-			case 'school' | 'schoolEvil':
-				loadGraphic('assets/images/weeb/pixelUI/arrows-pixels.png', true, 17, 17);
+		frames = FlxAtlasFrames.fromSparrow('assets/images/NOTE_assets.png', 'assets/images/NOTE_assets.xml');
 
-				animation.add('greenScroll', [6]);
-				animation.add('redScroll', [7]);
-				animation.add('blueScroll', [5]);
-				animation.add('purpleScroll', [4]);
+		animation.addByPrefix('greenScroll', 'green0');
+		animation.addByPrefix('redScroll', 'red0');
+		animation.addByPrefix('blueScroll', 'blue0');
+		animation.addByPrefix('purpleScroll', 'purple0');
 
-				if (isSustainNote)
-				{
-					loadGraphic('assets/images/weeb/pixelUI/arrowEnds.png', true, 7, 6);
+		animation.addByPrefix('purpleholdend', 'pruple end hold');
+		animation.addByPrefix('greenholdend', 'green hold end');
+		animation.addByPrefix('redholdend', 'red hold end');
+		animation.addByPrefix('blueholdend', 'blue hold end');
 
-					animation.add('purpleholdend', [4]);
-					animation.add('greenholdend', [6]);
-					animation.add('redholdend', [7]);
-					animation.add('blueholdend', [5]);
+		animation.addByPrefix('purplehold', 'purple hold piece');
+		animation.addByPrefix('greenhold', 'green hold piece');
+		animation.addByPrefix('redhold', 'red hold piece');
+		animation.addByPrefix('bluehold', 'blue hold piece');
 
-					animation.add('purplehold', [0]);
-					animation.add('greenhold', [2]);
-					animation.add('redhold', [3]);
-					animation.add('bluehold', [1]);
-				}
-
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
-				updateHitbox();
-
-			default:
-				frames = FlxAtlasFrames.fromSparrow('assets/images/NOTE_assets.png', 'assets/images/NOTE_assets.xml');
-
-				animation.addByPrefix('greenScroll', 'green0');
-				animation.addByPrefix('redScroll', 'red0');
-				animation.addByPrefix('blueScroll', 'blue0');
-				animation.addByPrefix('purpleScroll', 'purple0');
-
-				animation.addByPrefix('purpleholdend', 'pruple end hold');
-				animation.addByPrefix('greenholdend', 'green hold end');
-				animation.addByPrefix('redholdend', 'red hold end');
-				animation.addByPrefix('blueholdend', 'blue hold end');
-
-				animation.addByPrefix('purplehold', 'purple hold piece');
-				animation.addByPrefix('greenhold', 'green hold piece');
-				animation.addByPrefix('redhold', 'red hold piece');
-				animation.addByPrefix('bluehold', 'blue hold piece');
-
-				setGraphicSize(Std.int(width * 0.7));
-				updateHitbox();
-				antialiasing = true;
-		}
+		setGraphicSize(Std.int(width * 0.7));
+		updateHitbox();
+		antialiasing = true;
 
 		switch (noteData)
 		{
