@@ -18,6 +18,8 @@ typedef SwagSong =
 	var player1:String;
 	var player2:String;
 	var validScore:Bool;
+
+	var songChartVersion:Float;
 }
 
 class Song
@@ -40,29 +42,10 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var rawJson = Assets.getText('assets/data/' + folder.toLowerCase() + '/' + jsonInput.toLowerCase() + '.json').trim();
+		var rawJson = Assets.getText('assets/data/songs/' + folder.toLowerCase() + '/' + jsonInput.toLowerCase() + '.json').trim();
 
 		while (!rawJson.endsWith("}"))
-		{
 			rawJson = rawJson.substr(0, rawJson.length - 1);
-			// LOL GOING THROUGH THE BULLSHIT TO CLEAN IDK WHATS STRANGE
-		}
-
-		// FIX THE CASTING ON WINDOWS/NATIVE
-		// Windows???
-		// trace(songData);
-
-		// trace('LOADED FROM JSON: ' + songData.notes);
-		/* 
-			for (i in 0...songData.notes.length)
-			{
-				trace('LOADED FROM JSON: ' + songData.notes[i].sectionNotes);
-				// songData.notes[i].sectionNotes = songData.notes[i].sectionNotes
-			}
-
-				daNotes = songData.notes;
-				daSong = songData.song;
-				daBpm = songData.bpm; */
 
 		return parseJSONshit(rawJson);
 	}
@@ -71,6 +54,13 @@ class Song
 	{
 		var swagShit:SwagSong = cast Json.parse(rawJson).song;
 		swagShit.validScore = true;
+
+		// song chart conversion goes here
+
+		swagShit.songChartVersion = songChartVersion;
+
 		return swagShit;
 	}
+
+	public static var songChartVersion:Float = 1.0;
 }
