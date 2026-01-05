@@ -130,6 +130,8 @@ class PlayState extends MusicBeatState
 
 		stageScript = new StageScript(SONG.stage, this);
 
+		callOnScripts('preCreate');
+		
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
@@ -282,6 +284,7 @@ class PlayState extends MusicBeatState
 			startCountdown();
 
 		super.create();
+		callOnScripts('postCreate');
 	}
 
 	function runDialogue(?dialogueBox:DialogueBox):Void
@@ -289,6 +292,8 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
+
+		callOnScripts('runDialogue', [dialogueBox]);
 
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{
@@ -399,6 +404,8 @@ class PlayState extends MusicBeatState
 			}
 
 			swagCounter += 1;
+			callOnScripts('countdownTick', [swagCounter]);
+
 			// generateSong('fresh');
 		}, 5);
 	}
@@ -418,6 +425,7 @@ class PlayState extends MusicBeatState
 			FlxG.sound.playMusic(SONG.song.inst(), 1, false);
 		FlxG.sound.music.onComplete = endSong;
 		vocals.play();
+		callOnScripts('startSong');
 	}
 
 	var debugNum:Int = 0;
@@ -500,6 +508,7 @@ class PlayState extends MusicBeatState
 		unspawnNotes.sort(sortByShit);
 
 		generatedMusic = true;
+		callOnScripts('generateSong', [dataPath]);
 	}
 
 	function sortByShit(Obj1:Note, Obj2:Note):Int
@@ -528,6 +537,8 @@ class PlayState extends MusicBeatState
 
 			strumLineNotes.add(babyArrow);
 		}
+
+		callOnScripts('generateStaticArrows', [player]);
 	}
 
 	function tweenCamIn():Void
@@ -550,6 +561,7 @@ class PlayState extends MusicBeatState
 		}
 
 		super.openSubState(SubState);
+		callOnScripts('openSubState', [SubState, paused]);
 	}
 
 	override function closeSubState()
@@ -565,6 +577,8 @@ class PlayState extends MusicBeatState
 		}
 
 		super.closeSubState();
+
+		callOnScripts('closeSubState', [paused]);
 	}
 
 	function resyncVocals():Void
@@ -575,6 +589,7 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = FlxG.sound.music.time;
 		vocals.time = Conductor.songPosition;
 		vocals.play();
+		callOnScripts('resyncVocals');
 	}
 
 	private var paused:Bool = false;
@@ -815,6 +830,8 @@ class PlayState extends MusicBeatState
 
 		if (!inCutscene)
 			keyShit();
+
+		callOnScripts('update', [elapsed]);
 	}
 
 	function endSong():Void
@@ -824,6 +841,8 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		if (SONG.validScore)
 			Highscore.saveScore(SONG.song, songScore, storyDifficulty);
+
+		callOnScripts('endSong', [isStoryMode]);
 
 		if (isStoryMode)
 		{
@@ -1000,6 +1019,8 @@ class PlayState extends MusicBeatState
 		});
 
 		curSection += 1;
+
+		callOnScripts('popUpScore', [strumtime, daRating, combo, [daRatingPrefix, daRatingSuffix]]);
 	}
 
 	private function keyShit():Void
@@ -1172,6 +1193,8 @@ class PlayState extends MusicBeatState
 			else
 				spr.centerOffsets();
 		});
+
+		callOnScripts('keyShit', []);
 	}
 
 	function noteMiss(direction:Int = 1):Void
@@ -1206,6 +1229,8 @@ class PlayState extends MusicBeatState
 				case 3:
 					boyfriend.playAnim('singRIGHTmiss', true);
 			}
+
+			callOnScripts('noteMiss', [direction]);
 		}
 	}
 
@@ -1226,6 +1251,7 @@ class PlayState extends MusicBeatState
 			noteMiss(2);
 		if (rightP)
 			noteMiss(3);
+		callOnScripts('badNoteCheck');
 	}
 
 	function noteCheck(keyP:Bool, note:Note):Void
@@ -1234,6 +1260,7 @@ class PlayState extends MusicBeatState
 			goodNoteHit(note);
 		else
 			badNoteCheck();
+		callOnScripts('noteCheck', [keyP, note]);
 	}
 
 	function goodNoteHit(note:Note):Void
@@ -1279,6 +1306,7 @@ class PlayState extends MusicBeatState
 				note.destroy();
 			}
 		}
+		callOnScripts('goodNoteHit', [note]);
 	}
 
 	public var maxVocalOffsetTilResync:Float = 20.0;
@@ -1293,6 +1321,8 @@ class PlayState extends MusicBeatState
 				trace('VOCAL RESYNC');
 				resyncVocals();
 			}
+
+		callOnScripts('stepHit', [curStep]);
 	}
 
 	override function beatHit()
@@ -1337,13 +1367,22 @@ class PlayState extends MusicBeatState
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
 			boyfriend.playAnim('hey', true);
+
+		callOnScripts('beatHit', [curBeat]);
 	}
 
 	public function makeStageBack()
 	{
+		callOnScripts('makeStageBack');
 	}
 
 	public function makeStageFront()
 	{
+		callOnScripts('makeStageFront');
+	}
+
+	public function callOnScripts(method:String, ?params:Array<Dynamic>)
+	{
+		stageScript.call(method, params);
 	}
 }
