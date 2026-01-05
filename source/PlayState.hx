@@ -766,7 +766,7 @@ class PlayState extends MusicBeatState
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
-				daNote.active = daNote.y > FlxG.height;
+				daNote.active = !daNote.y > FlxG.height;
 				daNote.visible = daNote.active;
 
 				daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
