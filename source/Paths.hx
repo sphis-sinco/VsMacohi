@@ -22,6 +22,7 @@ class Paths
 
 	static function getPath(file:String, type:AssetType)
 	{
+		trace('assets/$file');
 		return 'assets/$file';
 	}
 
@@ -62,12 +63,12 @@ class Paths
 
 	inline static public function voices(song:String)
 	{
-		return music('${song.toLowerCase()}_Voices');
+		return music('${song}_Voices');
 	}
 
 	inline static public function inst(song:String)
 	{
-		return music('${song.toLowerCase()}_Inst');
+		return music('${song}_Inst');
 	}
 
 	inline static public function image(key:String)
