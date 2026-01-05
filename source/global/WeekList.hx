@@ -4,6 +4,8 @@ package global;
 import sys.FileSystem;
 #end
 
+using StringTools;
+
 class WeekList
 {
 	static var _cache:Array<String> = [];
@@ -14,6 +16,7 @@ class WeekList
 	{
 		var returnData = [];
 
+		returnData = ["tutorial"];
 		#if sys
 		var weeks = FileSystem.readDirectory("assets/data/weeks/");
 
@@ -22,9 +25,8 @@ class WeekList
 
 		for (week in weeks)
 			if (!FileSystem.isDirectory("assets/data/weeks/" + week))
-				returnData.push(StringTools.replace(week, '.json', ''));
-		#else
-		returnData = ["tutorial"];
+				if (!returnData.contains(week.replace('.json', '')))
+					returnData.push(week.replace('.json', ''));
 		#end
 
 		for (week in returnData)

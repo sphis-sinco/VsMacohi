@@ -1,0 +1,24 @@
+{
+        "weekTitle": "Teachin time",
+        "songs": [
+                "tutorial"
+        ],
+        "props": [
+                {
+                        "charID": "bf",
+                        "charPosID": 1,
+                        "offsets": [
+                                0,
+                                15
+                        ]
+                },
+                {
+                        "charID": "gf",
+                        "charPosID": 2,
+                        "offsets": [
+                                150,
+                                150
+                        ]
+                }
+        ]
+}
