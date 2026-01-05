@@ -71,9 +71,9 @@ class DialogueBox extends FlxSpriteGroup
 		portraitLeft.screenCenter(X);
 
 		swagDialogue = new FlxTypeText(box.x + 10, box.y + 10, Std.int(box.width - 20), '', 32);
-		swagDialogue.font = 'assets/fonts/vcr.ttf';
+		swagDialogue.font = 'vcr.ttf'.font();
 		swagDialogue.color = 0x000000;
-		swagDialogue.sounds = [FlxG.sound.load('assets/sounds/pixelText' + TitleState.soundExt, 0.6)];
+		swagDialogue.sounds = [FlxG.sound.load('pixelText'.sound(), 0.6)];
 		add(swagDialogue);
 
 		this.dialogueList = dialogueList;
@@ -101,7 +101,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			remove(dialogue);
 
-			FlxG.sound.play('assets/sounds/clickText' + TitleState.soundExt, 0.8);
+			FlxG.sound.play('clickText'.sound(), 0.8);
 
 			if (dialogueList[1] == null && dialogueList[0] != null)
 			{

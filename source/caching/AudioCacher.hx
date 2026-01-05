@@ -7,15 +7,15 @@ class AudioCacher
 {
 	public static function cacheSongs()
 	{
-		var songs = CoolUtil.coolTextFile('assets/data/freeplaySonglist.txt');
+		var songs = CoolUtil.splitTextfileIntoArray('freeplaySonglist'.txt());
 		for (song in songs)
 			cacheSong(song);
 	}
 
 	public static function cacheSong(song:String)
 	{
-		var instPath = 'assets/music/${song}_Inst' + TitleState.soundExt;
-		var voicesPath = 'assets/music/${song}_Voices' + TitleState.soundExt;
+		var instPath = song.inst();
+		var voicesPath = song.voices();
 
 		trace('Caching... $song ' + '(${(Assets.exists(instPath)) ? 'inst' : 'no-inst'}/${(Assets.exists(voicesPath)) ? 'voices' : 'no-voices'})');
 

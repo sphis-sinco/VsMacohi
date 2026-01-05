@@ -48,8 +48,8 @@ class Note extends FlxSprite
 
 		var daStage:String = PlayState.curStage;
 
-		frames = FlxAtlasFrames.fromSparrow('assets/images/NOTE_assets.png', 'assets/images/NOTE_assets.xml');
-
+		frames = 'NOTE_assets'.getSparrowAtlas();
+		
 		animation.addByPrefix('greenScroll', 'green0');
 		animation.addByPrefix('redScroll', 'red0');
 		animation.addByPrefix('blueScroll', 'blue0');

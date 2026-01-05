@@ -86,10 +86,6 @@ class Main extends Sprite
 
 		FlxSprite.defaultAntialiasing = true;
 
-		#if (!web)
-		TitleState.soundExt = '.ogg';
-		#end
-
 		AudioCacher.cacheSongs();
 		ImageCacher.cacheUI();
 

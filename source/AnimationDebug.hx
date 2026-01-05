@@ -1,5 +1,7 @@
 package;
 
+import characters.Boyfriend;
+import characters.Character;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;

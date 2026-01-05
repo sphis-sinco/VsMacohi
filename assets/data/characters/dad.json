@@ -1,0 +1,74 @@
+{
+	"flipX": false,
+	"notes": [],
+	"atlasPath": "DADDY_DEAREST",
+	"flipY": false,
+	"iconPath": "dad",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "Dad idle dance",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": true,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad Sing Note UP",
+			"name": "singUP",
+			"offsets": [
+				-6,
+				50
+			],
+			"looped": true,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad Sing Note RIGHT",
+			"name": "singRIGHT",
+			"offsets": [
+				0,
+				27
+			],
+			"looped": true,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad Sing Note DOWN",
+			"name": "singDOWN",
+			"offsets": [
+				0,
+				-30
+			],
+			"looped": true,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad Sing Note LEFT",
+			"name": "singLEFT",
+			"offsets": [
+				-10,
+				10
+			],
+			"looped": true,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		}
+	]
+}

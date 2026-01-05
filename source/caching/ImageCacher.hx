@@ -26,6 +26,6 @@ class ImageCacher
 	public static function cacheImage(img:String)
 	{
 		trace('Caching $img');
-		FlxG.bitmap.add('assets/images/$img.png');
+		FlxG.bitmap.add(img.image());
 	}
 }

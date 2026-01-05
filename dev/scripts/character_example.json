@@ -1,0 +1,43 @@
+{
+	"flipX": false,
+	"notes": [
+		"example character json",
+		"prob gonna use this so I can use https://yal.cc/r/19/json2typedef/"
+	],
+	"atlasPath": "atlasPath",
+	"flipY": false,
+	"iconPath": "none",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "prefix",
+			"name": "name",
+			"looped": true,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "prefix",
+			"name": "name",
+			"postfix": "",
+			"looped": true,
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"flipY": false,
+			"type": "indices",
+			"frameRate": 24
+		}
+	]
+}
