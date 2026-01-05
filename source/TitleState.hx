@@ -63,7 +63,7 @@ class TitleState extends MusicBeatState
 		#elseif FREEPLAY
 		FlxG.switchState(() -> new FreeplayState());
 		#elseif CHARTING
-		FlxG.switchState(() -> new ChartingState());
+		FlxG.switchState(() -> new debugStates.ChartingState());
 		#else
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{

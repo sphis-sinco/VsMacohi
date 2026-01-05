@@ -84,6 +84,8 @@ class Main extends Sprite
 
 		global.WeekList.get;
 		global.SongList.get;
+		global.CharacterList.get;
+		global.StageList.get;
 
 		AudioCacher.cacheSongs();
 		ImageCacher.cacheUI();

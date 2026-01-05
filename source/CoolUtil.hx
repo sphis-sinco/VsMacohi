@@ -13,7 +13,7 @@ class CoolUtil
 
 	public static function splitTextfileIntoArray(path:String):Array<String>
 	{
-		var daList:Array<String> = Assets.getText(path).trim().split('\n');
+		var daList:Array<String> = (path.getTextContent()).trim().split('\n');
 
 		for (i in 0...daList.length)
 		{

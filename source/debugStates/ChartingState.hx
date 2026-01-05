@@ -1,5 +1,7 @@
 package debugStates;
 
+import global.StageList;
+import global.CharacterList;
 import Section.SwagSection;
 import Song.SwagSong;
 import Conductor.BPMChangeEvent;
@@ -113,9 +115,9 @@ class ChartingState extends MusicBeatState
 		if (PlayState.SONG != null)
 			_song = PlayState.SONG;
 		else
-		{
 			_song = Song.defaultSongChart;
-		}
+
+		Song.convertChart(_song);
 
 		FlxG.mouse.visible = true;
 		// FlxG.save.bind('funkin', 'ninjamuffin99');
@@ -216,7 +218,8 @@ class ChartingState extends MusicBeatState
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 
-		var characters:Array<String> = CoolUtil.splitTextfileIntoArray('characterList'.txt());
+		var characters:Array<String> = CharacterList.get;
+		var stages:Array<String> = StageList.get;
 
 		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
@@ -230,6 +233,13 @@ class ChartingState extends MusicBeatState
 		});
 
 		player2DropDown.selectedLabel = _song.player2;
+
+		var stageDropDown = new FlxUIDropDownMenu(270, 100, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
+		{
+			_song.player2 = stages[Std.parseInt(stage)];
+		});
+
+		stageDropDown.selectedLabel = _song.stage;
 
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";
@@ -245,6 +255,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(stepperSpeed);
 		tab_group_song.add(player1DropDown);
 		tab_group_song.add(player2DropDown);
+		tab_group_song.add(stageDropDown);
 
 		UI_box.addGroup(tab_group_song);
 		UI_box.scrollFactor.set();
@@ -438,21 +449,21 @@ class ChartingState extends MusicBeatState
 	var updatedSection:Bool = false;
 
 	/* this function got owned LOL
-	function lengthBpmBullshit():Float
-	{
-		if (_song.notes[curSection].changeBPM)
-			return _song.notes[curSection].lengthInSteps * (_song.notes[curSection].bpm / _song.bpm);
-		else
-			return _song.notes[curSection].lengthInSteps;
+		function lengthBpmBullshit():Float
+		{
+			if (_song.notes[curSection].changeBPM)
+				return _song.notes[curSection].lengthInSteps * (_song.notes[curSection].bpm / _song.bpm);
+			else
+				return _song.notes[curSection].lengthInSteps;
 	}*/
-
 	function sectionStartTime():Float
 	{
 		var dabpm:Float = _song.bpm;
 		var daPos:Float = 0;
 		for (i in 0...curSection)
 		{
-			if (_song.notes[i].changeBPM) {
+			if (_song.notes[i].changeBPM)
+			{
 				dabpm = _song.notes[i].bpm;
 			}
 			daPos += 4 * (1000 * 60 / dabpm);
@@ -632,11 +643,6 @@ class ChartingState extends MusicBeatState
 
 		_song.bpm = tempbpm;
 
-		/* if (FlxG.keys.justPressed.UP)
-				Conductor.changeBPM(Conductor.bpm + 1);
-			if (FlxG.keys.justPressed.DOWN)
-				Conductor.changeBPM(Conductor.bpm - 1); */
-
 		var shiftThing:Int = 1;
 		if (FlxG.keys.pressed.SHIFT)
 			shiftThing = 4;
@@ -726,11 +732,11 @@ class ChartingState extends MusicBeatState
 				vocals.pause();
 
 				/*var daNum:Int = 0;
-				var daLength:Float = 0;
-				while (daNum <= sec)
-				{
-					daLength += lengthBpmBullshit();
-					daNum++;
+					var daLength:Float = 0;
+					while (daNum <= sec)
+					{
+						daLength += lengthBpmBullshit();
+						daNum++;
 				}*/
 
 				FlxG.sound.music.time = sectionStartTime();
@@ -812,7 +818,7 @@ class ChartingState extends MusicBeatState
 		}
 		else
 		{
-			//get last bpm
+			// get last bpm
 			var dabpm:Float = _song.bpm;
 			for (i in 0...curSection)
 				if (_song.notes[i].changeBPM)
@@ -957,29 +963,28 @@ class ChartingState extends MusicBeatState
 	}
 
 	/*
-	function calculateSectionLengths(?sec:SwagSection):Int
-	{
-		var daLength:Int = 0;
-
-		for (i in _song.notes)
+		function calculateSectionLengths(?sec:SwagSection):Int
 		{
-			var swagLength = i.lengthInSteps;
+			var daLength:Int = 0;
 
-			if (i.typeOfSection == Section.COPYCAT)
-				swagLength * 2;
-
-			daLength += swagLength;
-
-			if (sec != null && sec == i)
+			for (i in _song.notes)
 			{
-				trace('swag loop??');
-				break;
+				var swagLength = i.lengthInSteps;
+
+				if (i.typeOfSection == Section.COPYCAT)
+					swagLength * 2;
+
+				daLength += swagLength;
+
+				if (sec != null && sec == i)
+				{
+					trace('swag loop??');
+					break;
+				}
 			}
-		}
 
-		return daLength;
+			return daLength;
 	}*/
-
 	private var daSpacing:Float = 0.3;
 
 	function loadLevel():Void

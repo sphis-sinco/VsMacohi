@@ -4,16 +4,18 @@ import crowplexus.iris.Iris;
 
 class Script extends Iris
 {
+	override public function new(path:String, scriptName:String)
+	{
+		super(path.hxc().getTextContent(), {
+			name: scriptName
+		});
 
-    override public function new(path:String, scriptName:String) {
-        super(path.hxc().getTextContent(), {
-            name: scriptName
-        });
+		initVars();
+	}
 
-        initVars();
-    }
-
-    public static var defaultVariables:Map<String, Dynamic> = [
+	public static function getDefaultVariables():Map<String, Dynamic>
+	{
+		return [
 			// Haxe related stuff
 			"Std" => Std,
 			"Math" => Math,
@@ -71,12 +73,11 @@ class Script extends Iris
 
 			"CoolUtil" => CoolUtil,
 		];
+	}
 
-    public function initVars()
-    {
-        for (key => value in defaultVariables) {
-            set(key, value);
-        }
-    }
-    
+	public function initVars()
+	{
+		for (key => value in getDefaultVariables())
+			set(key, value);
+	}
 }

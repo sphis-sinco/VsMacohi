@@ -57,14 +57,17 @@ class Song
 		var swagShit:SwagSong = cast Json.parse(rawJson).song;
 		swagShit.validScore = true;
 
-		// song chart conversion goes here
+		convertChart(swagShit);
 
+		return swagShit;
+	}
+
+	public static function convertChart(swagShit:SwagSong)
+	{
 		if (swagShit.songChartVersion == 1.0)
 			swagShit.stage = 'stage';
 
 		swagShit.songChartVersion = songChartVersion;
-
-		return swagShit;
 	}
 
 	public static var songChartVersion:Float = 1.1;
