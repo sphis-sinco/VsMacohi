@@ -1,6 +1,5 @@
 package characters;
 
-import sys.io.File;
 import haxe.Json;
 
 using StringTools;
@@ -60,7 +59,7 @@ class Character extends CharacterBase
 
 		try
 		{
-			var cd = Json.parse(File.getContent(('characters/' + char).json()));
+			var cd = Json.parse((('characters/' + char).json()).getTextContent());
 			characters.set(char, cd);
 
 			return cd;

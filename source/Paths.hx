@@ -1,5 +1,9 @@
 package;
 
+#if sys
+import sys.io.File;
+#end
+import lime.utils.Assets;
 import flixel.FlxG;
 import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.AssetType;
@@ -113,5 +117,14 @@ class Paths
 	inline static public function getPackerAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
+	}
+
+	inline static public function getTextContent(path:String):String
+	{
+		#if sys
+		return File.getContent(path);
+		#end
+
+		return Assets.getText(path);
 	}
 }
