@@ -1,5 +1,6 @@
 package debugStates;
 
+import haxe.Json;
 import characters.Boyfriend;
 import characters.Character;
 import flixel.FlxG;
@@ -24,6 +25,7 @@ class AnimationDebug extends FlxState
 	var bf:Boyfriend;
 	var dad:Character;
 	var char:Character;
+
 	var textAnim:FlxText;
 	var dumbTexts:FlxTypedGroup<FlxText>;
 	var animList:Array<String> = [];
@@ -54,22 +56,23 @@ class AnimationDebug extends FlxState
 		{
 			dad = new Character(0, 0, daAnim);
 			dad.screenCenter();
-			dad.debugMode = true;
-			add(dad);
 
 			char = dad;
-			dad.flipX = false;
+
+			add(char);
 		}
 		else
 		{
 			bf = new Boyfriend(0, 0);
-			bf.screenCenter();
-			bf.debugMode = true;
-			add(bf);
 
 			char = bf;
-			bf.flipX = false;
+
+			add(char);
 		}
+
+		char.screenCenter();
+		char.debugMode = true;
+		char.flipX = false;
 
 		dumbTexts = new FlxTypedGroup<FlxText>();
 		add(dumbTexts);
@@ -93,6 +96,12 @@ class AnimationDebug extends FlxState
 	function genBoyOffsets(pushList:Bool = true):Void
 	{
 		var daLoop:Int = 0;
+
+		for (txt in dumbTexts.members)
+		{
+			txt.destroy();
+			dumbTexts.members.remove(txt);
+		}
 
 		for (anim => offsets in char.animOffsets)
 		{
@@ -200,15 +209,7 @@ class AnimationDebug extends FlxState
 
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
-			var outputString:String = "";
-
-			for (swagAnim in animList)
-			{
-				outputString += swagAnim + " " + char.animOffsets.get(swagAnim)[0] + " " + char.animOffsets.get(swagAnim)[1] + "\n";
-			}
-
-			outputString.trim();
-			saveOffsets(outputString);
+			saveOffsets();
 		}
 
 		super.update(elapsed);
@@ -216,16 +217,19 @@ class AnimationDebug extends FlxState
 
 	var _file:FileReference;
 
-	private function saveOffsets(saveString:String)
+	private function saveOffsets()
 	{
-		if ((saveString != null) && (saveString.length > 0))
+		for (anim in char.character_data.animations)
 		{
-			_file = new FileReference();
-			_file.addEventListener(Event.COMPLETE, onSaveComplete);
-			_file.addEventListener(Event.CANCEL, onSaveCancel);
-			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
-			_file.save(saveString, daAnim + "Offsets.txt");
+			var o = char.animOffsets.get(anim.name);
+			anim.offsets = [o[0],o[1]];
 		}
+
+		_file = new FileReference();
+		_file.addEventListener(Event.COMPLETE, onSaveComplete);
+		_file.addEventListener(Event.CANCEL, onSaveCancel);
+		_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
+		_file.save(Json.stringify(char.character_data, '\n'), daAnim + ".json");
 	}
 
 	function onSaveComplete(_):Void
