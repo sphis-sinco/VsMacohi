@@ -89,6 +89,11 @@ class Main extends Sprite
 				trace('cleared character cache');
 				Character.characters.clear();
 			}
+			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.R)
+			{
+				trace('resetState');
+				FlxG.resetState();
+			}
 		});
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
