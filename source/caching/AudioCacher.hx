@@ -23,7 +23,7 @@ class AudioCacher
 		if (instPath.assetExists())
 			cacheAudio(instPath);
 		if (voicesPath.assetExists())
-			cacheAudio(instPath);
+			cacheAudio(voicesPath);
 	}
 
 	public static function cacheAudio(audio:String)

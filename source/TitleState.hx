@@ -1,5 +1,6 @@
 package;
 
+import caching.AudioCacher;
 import caching.CacheManager;
 import debugStates.AnimationDebug;
 import caching.ImageCacher;
@@ -45,6 +46,14 @@ class TitleState extends MusicBeatState
 	override public function create():Void
 	{
 		CacheManager.freeMemory();
+		
+		global.WeekList.get;
+		global.SongList.get;
+		global.CharacterList.get;
+		global.StageList.get;
+
+		// AudioCacher.cacheSongs();
+		ImageCacher.cacheUI();
 		
 		PlayerSettings.init();
 

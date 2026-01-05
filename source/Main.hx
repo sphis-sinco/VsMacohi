@@ -80,14 +80,6 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 		
-		global.WeekList.get;
-		global.SongList.get;
-		global.CharacterList.get;
-		global.StageList.get;
-
-		AudioCacher.cacheSongs();
-		ImageCacher.cacheUI();
-
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
 
 		#if !mobile

@@ -9,7 +9,6 @@ class CacheManager
 	/**
 		yoinked from ocrpg hehehehe
 	**/
-
 	public static function bitmapDumpCache() @:privateAccess
 	{
 		#if !web
@@ -24,7 +23,9 @@ class CacheManager
 
 	public static function freeMemory():Void
 	{
-        bitmapDumpCache();
+		trace('free memory');
+
+		bitmapDumpCache();
 
 		FlxG.bitmap.clearCache();
 		FlxG.bitmap.clearUnused();

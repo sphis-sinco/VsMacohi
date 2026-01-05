@@ -123,12 +123,21 @@ class Character extends CharacterBase
 					trace(' * indices anim: ' + a.name);
 					animation.addByIndices(a.name, a.prefix, a.indices, a?.postfix ?? '', a?.frameRate ?? 24, a?.looped ?? false, a?.flipX ?? false,
 						a?.flipY ?? false);
+
+				default:
+					trace(' * unknown anim type: ' + a.name);
 			}
 
-			if (a.offsets != null)
-				addOffset(a.name, a?.offsets[0] ?? 0, a?.offsets[1] ?? 0);
-			else
-				addOffset(a.name);
+			addOffset(a.name);
+			try
+			{
+				if (a.offsets != null)
+					addOffset(a.name, a.offsets[0], a.offsets[1]);
+			}
+			catch (e)
+			{
+				trace('  * ' + e.message);
+			}
 		}
 
 		animation.play('idle');

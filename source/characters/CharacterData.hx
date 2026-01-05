@@ -31,6 +31,6 @@ typedef CharacterData =
             ?postfix:String,
 			?indices:Array<Int>,
 
-            ?offsets:Array<Null<Float>>
+            ?offsets:Array<Float>
 		}>
 }
