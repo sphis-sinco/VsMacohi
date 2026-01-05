@@ -25,7 +25,7 @@ class MusicBeatState extends FlxUIState
 		if (transIn != null)
 			trace('reg ' + transIn.region);
 
-		ImageCacher.cacheUI();
+		// ImageCacher.cacheUI();
 
 		super.create();
 	}
