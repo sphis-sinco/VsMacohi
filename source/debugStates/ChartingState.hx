@@ -221,20 +221,20 @@ class ChartingState extends MusicBeatState
 		var characters:Array<String> = CharacterList.get;
 		var stages:Array<String> = StageList.get;
 
-		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		var player1DropDown = new FlxUIDropDownMenu(10, 150, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player1 = characters[Std.parseInt(character)];
 		});
 		player1DropDown.selectedLabel = _song.player1;
 
-		var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		var player2DropDown = new FlxUIDropDownMenu(player1DropDown.x + 130, player1DropDown.y, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player2 = characters[Std.parseInt(character)];
 		});
 
 		player2DropDown.selectedLabel = _song.player2;
 
-		var stageDropDown = new FlxUIDropDownMenu(270, 100, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
+		var stageDropDown = new FlxUIDropDownMenu(player1DropDown.x, player1DropDown.y + 130, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
 		{
 			_song.player2 = stages[Std.parseInt(stage)];
 		});
@@ -253,8 +253,12 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(loadAutosaveBtn);
 		tab_group_song.add(stepperBPM);
 		tab_group_song.add(stepperSpeed);
+		
+		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 50, 0, "Player 1", 32));
 		tab_group_song.add(player1DropDown);
+		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 50, 0, "Player 2", 32));
 		tab_group_song.add(player2DropDown);
+		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 50, 0, "Stage", 32));
 		tab_group_song.add(stageDropDown);
 
 		UI_box.addGroup(tab_group_song);
