@@ -128,6 +128,8 @@ class PlayState extends MusicBeatState
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial');
 
+		Song.convertChart(SONG, (Highscore.formatSong(SONG.song, storyDifficulty)).songJson());
+
 		stageScript = new StageScript(SONG.stage, this);
 
 		callOnScripts('preCreate');
@@ -881,7 +883,7 @@ class PlayState extends MusicBeatState
 				FlxTransitionableState.skipNextTransOut = true;
 				prevCamFollow = camFollow;
 
-				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
+				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
 				FlxG.sound.music.stop();
 
 				FlxG.switchState(() -> new PlayState());

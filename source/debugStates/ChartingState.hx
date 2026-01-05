@@ -97,11 +97,12 @@ class ChartingState extends MusicBeatState
 		curRenderedSustains = new FlxTypedGroup<FlxSprite>();
 
 		if (PlayState.SONG != null)
+		{
 			_song = PlayState.SONG;
+			Song.convertChart(_song);
+		}
 		else
 			_song = Song.defaultSongChart;
-
-		Song.convertChart(_song);
 
 		FlxG.mouse.visible = true;
 		// FlxG.save.bind('funkin', 'ninjamuffin99');
@@ -153,7 +154,6 @@ class ChartingState extends MusicBeatState
 
 		add(curRenderedNotes);
 		add(curRenderedSustains);
-
 
 		add(leftSide);
 		add(rightSide);
@@ -791,8 +791,8 @@ class ChartingState extends MusicBeatState
 		updateSideTexts();
 	}
 
-	var leftSide:FlxText = new FlxText(0,0,0,'',16);
-	var rightSide:FlxText = new FlxText(0,0,0,'',16);
+	var leftSide:FlxText = new FlxText(0, 0, 0, '', 16);
+	var rightSide:FlxText = new FlxText(0, 0, 0, '', 16);
 
 	function updateSideTexts():Void
 	{
@@ -1035,7 +1035,7 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+		PlayState.SONG = Song.loadFromJson(song.toLowerCase());
 		FlxG.resetState();
 	}
 

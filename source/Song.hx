@@ -1,5 +1,6 @@
 package;
 
+import sys.io.File;
 import Section.SwagSection;
 import haxe.Json;
 import haxe.format.JsonParser;
@@ -21,7 +22,7 @@ typedef SwagSong =
 	var player2:String;
 	var validScore:Bool;
 
-	var songChartVersion:Float;
+	var songChartVersion:Null<Float>;
 }
 
 class Song
@@ -42,32 +43,43 @@ class Song
 		this.bpm = bpm;
 	}
 
-	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
+	public static function loadFromJson(jsonInput:String):SwagSong
 	{
-		var rawJson = Assets.getText(('songs/' + folder.toLowerCase() + '/' + jsonInput.toLowerCase()).json()).trim();
+		var rawJson = (jsonInput.songJson()).getTextContent().trim();
 
 		while (!rawJson.endsWith("}"))
 			rawJson = rawJson.substr(0, rawJson.length - 1);
 
-		return parseJSONshit(rawJson);
+		return parseJSONshit(rawJson, jsonInput.songJson());
 	}
 
-	public static function parseJSONshit(rawJson:String):SwagSong
+	public static function parseJSONshit(rawJson:String, ?path:String):SwagSong
 	{
 		var swagShit:SwagSong = cast Json.parse(rawJson).song;
 		swagShit.validScore = true;
 
-		convertChart(swagShit);
+		convertChart(swagShit, path);
 
 		return swagShit;
 	}
 
-	public static function convertChart(swagShit:SwagSong)
+	public static function convertChart(swagShit:SwagSong, ?path:String)
 	{
-		if (swagShit.songChartVersion == 1.0)
+		trace('converting ${swagShit.song} from SCV${swagShit.songChartVersion} to SCV${songChartVersion}');
+
+		if (swagShit.songChartVersion == 1.0 || swagShit.songChartVersion == null)
 			swagShit.stage = 'stage';
 
 		swagShit.songChartVersion = songChartVersion;
+
+		#if sys
+		if (path != null)
+		{
+			trace('saving to $path');
+			File.saveContent(path, Json.stringify(swagShit, '\t'));
+		}
+		#end
+		trace('converted');
 	}
 
 	public static var songChartVersion:Float = 1.1;
