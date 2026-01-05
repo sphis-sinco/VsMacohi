@@ -89,7 +89,7 @@ class Main extends Sprite
 				trace('cleared character cache');
 				Character.characters.clear();
 			}
-			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.R)
+			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.P)
 			{
 				trace('resetState');
 				FlxG.resetState();
