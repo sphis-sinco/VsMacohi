@@ -1,5 +1,6 @@
 package;
 
+import sys.FileSystem;
 import sys.io.File;
 import Section.SwagSection;
 import haxe.Json;
@@ -73,7 +74,7 @@ class Song
 		swagShit.songChartVersion = songChartVersion;
 
 		#if sys
-		if (path != null)
+		if (path != null && path.assetExists())
 		{
 			trace('saving to $path');
 			File.saveContent(path, Json.stringify(swagShit, '\t'));
