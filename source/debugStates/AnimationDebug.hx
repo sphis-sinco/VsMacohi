@@ -22,8 +22,7 @@ using StringTools;
  */
 class AnimationDebug extends FlxState
 {
-	var bf:Boyfriend;
-	var dad:Character;
+	var clonechar:Character;
 	var char:Character;
 
 	var textAnim:FlxText;
@@ -49,30 +48,20 @@ class AnimationDebug extends FlxState
 		gridBG.scrollFactor.set(0.5, 0.5);
 		add(gridBG);
 
-		if (daAnim == 'bf')
-			isDad = false;
-
-		if (isDad)
-		{
-			dad = new Character(0, 0, daAnim);
-			dad.screenCenter();
-
-			char = dad;
-
-			add(char);
-		}
-		else
-		{
-			bf = new Boyfriend(0, 0);
-
-			char = bf;
-
-			add(char);
-		}
-
+		char = new Character(0, 0, daAnim);
 		char.screenCenter();
 		char.debugMode = true;
 		char.flipX = false;
+
+		clonechar = new Character(0, 0, daAnim);
+		clonechar.screenCenter();
+		clonechar.debugMode = true;
+		clonechar.flipX = false;
+		add(clonechar);
+		clonechar.animation.play('idle');
+		clonechar.alpha = .5;
+
+		add(char);
 
 		dumbTexts = new FlxTypedGroup<FlxText>();
 		add(dumbTexts);
@@ -130,6 +119,9 @@ class AnimationDebug extends FlxState
 	{
 		textAnim.text = 'Animation name: ' + char.animation.name;
 
+		clonechar.playAnim('idle');
+		clonechar.animOffsets = char.animOffsets;
+
 		if (FlxG.keys.justPressed.E)
 			FlxG.camera.zoom += 0.25;
 		if (FlxG.keys.justPressed.Q)
@@ -175,6 +167,9 @@ class AnimationDebug extends FlxState
 		if (FlxG.keys.justPressed.S || FlxG.keys.justPressed.W || FlxG.keys.justPressed.SPACE)
 		{
 			char.playAnim(animList[curAnim]);
+
+			if (char.animation.name == 'idle')
+				clonechar.animation.play('idle', true);
 
 			updateTexts();
 			genBoyOffsets(false);
@@ -222,7 +217,7 @@ class AnimationDebug extends FlxState
 		for (anim in char.character_data.animations)
 		{
 			var o = char.animOffsets.get(anim.name);
-			anim.offsets = [o[0],o[1]];
+			anim.offsets = [o[0], o[1]];
 		}
 
 		_file = new FileReference();
