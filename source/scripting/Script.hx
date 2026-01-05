@@ -1,5 +1,6 @@
 package scripting;
 
+import haxe.Log;
 import crowplexus.iris.Iris;
 
 class Script extends Iris
@@ -28,6 +29,8 @@ class Script extends Iris
 			"Application" => lime.app.Application,
 			"Main" => Main,
 			"window" => lime.app.Application.current.window,
+
+			'trace' => Log.trace,
 
 			// Flixel related stuff
 			"FlxG" => flixel.FlxG,

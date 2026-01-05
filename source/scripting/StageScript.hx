@@ -2,9 +2,8 @@ package scripting;
 
 class StageScript extends Script
 {
-	override public function new(stage:String, playState:PlayState)
+	override public function new(stage:String)
 	{
 		super('stages/${stage ?? 'stage'}', 'StageScript(${stage ?? 'stage'})');
-        set('game', playState);
 	}
 }

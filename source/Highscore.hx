@@ -2,10 +2,11 @@ package;
 
 import flixel.FlxG;
 
+using StringTools;
+
 class Highscore
 {
 	public static var songScores:Map<String, Int> = [];
-
 
 	public static function saveScore(song:String, score:Int = 0, ?diff:Int = 0):Void
 	{
@@ -14,8 +15,8 @@ class Highscore
 		if (songScores.exists(daSong))
 			if (songScores.get(daSong) < score)
 				setScore(daSong, score);
-		else
-			setScore(daSong, score);
+			else
+				setScore(daSong, score);
 	}
 
 	public static function saveWeekScore(week:Int = 1, score:Int = 0, ?diff:Int = 0):Void
@@ -25,8 +26,8 @@ class Highscore
 		if (songScores.exists(daWeek))
 			if (songScores.get(daWeek) < score)
 				setScore(daWeek, score);
-		else
-			setScore(daWeek, score);
+			else
+				setScore(daWeek, score);
 	}
 
 	/**
@@ -49,6 +50,21 @@ class Highscore
 		else if (diff == 2)
 			daSong += '-hard';
 
+		return daSong;
+	}
+
+	public static function unformatSong(song:String):String
+	{
+		var daSong:String = song;
+
+		var i = 0;
+		while (i < 3)
+		{
+			daSong.replace(formatSong('', i), '');
+			i++;
+		}
+
+		trace(daSong);
 		return daSong;
 	}
 

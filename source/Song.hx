@@ -46,7 +46,7 @@ class Song
 
 	public static function loadFromJson(jsonInput:String):SwagSong
 	{
-		var rawJson = (jsonInput.songJson()).getTextContent().trim();
+		var rawJson = ((Highscore.unformatSong(jsonInput)).songJson()).getTextContent().trim();
 
 		while (!rawJson.endsWith("}"))
 			rawJson = rawJson.substr(0, rawJson.length - 1);

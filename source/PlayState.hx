@@ -109,12 +109,18 @@ class PlayState extends MusicBeatState
 
 	public var stageScript:StageScript;
 
+	public static var instance:PlayState;
+
 	override public function create()
 	{
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
+
+		if (instance != null)
+			instance = null;
+		instance = this;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
@@ -130,7 +136,7 @@ class PlayState extends MusicBeatState
 
 		Song.convertChart(SONG, (Highscore.formatSong(SONG.song, storyDifficulty)).songJson());
 
-		stageScript = new StageScript(SONG.stage, this);
+		stageScript = new StageScript(SONG.stage);
 
 		callOnScripts('preCreate');
 
@@ -616,6 +622,9 @@ class PlayState extends MusicBeatState
 			openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		}
 
+		if (FlxG.keys.anyJustPressed([SEVEN, EIGHT, NINE]))
+			instance = null;
+
 		if (FlxG.keys.justPressed.SEVEN)
 			FlxG.switchState(() -> new ChartingState());
 		if (FlxG.keys.justPressed.EIGHT)
@@ -859,6 +868,7 @@ class PlayState extends MusicBeatState
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
 
+				instance = null;
 				FlxG.switchState(() -> new StoryMenuState());
 
 				// if ()
@@ -892,6 +902,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			trace('WENT BACK TO FREEPLAY??');
+			instance = null;
 			FlxG.switchState(() -> new FreeplayState());
 		}
 	}
@@ -1390,5 +1401,10 @@ class PlayState extends MusicBeatState
 		returnValues.set('stage', stageScript.call(method, params));
 
 		return returnValues;
+	}
+
+	public function setOnScripts(vari:String, value:Dynamic)
+	{
+		stageScript.set(vari, value);
 	}
 }
