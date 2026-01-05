@@ -1,5 +1,6 @@
 package;
 
+import caching.CacheManager;
 import HealthIcon.HealthIconAnims;
 import scripting.StageScript;
 import caching.AudioCacher;
@@ -113,6 +114,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		CacheManager.freeMemory();
+
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
@@ -135,6 +138,7 @@ class PlayState extends MusicBeatState
 			SONG = Song.loadFromJson('tutorial');
 
 		Song.convertChart(SONG, (Highscore.formatSong(SONG.song, storyDifficulty)).songJson());
+		AudioCacher.cacheSong(SONG.song);
 
 		stageScript = new StageScript(SONG.stage);
 
