@@ -243,11 +243,11 @@ class PlayState extends MusicBeatState
 		add(scoreTxt);
 
 		iconP1 = new HealthIcon(boyfriend.iconPath, true);
-		iconP1.y = healthBar.y - (iconP1.height / 2);
+		iconP1.y = healthBar.y - (iconP1.height / 2.5);
 		add(iconP1);
 
 		iconP2 = new HealthIcon(dad.iconPath, false);
-		iconP2.y = healthBar.y - (iconP2.height / 2);
+		iconP2.y = healthBar.y - (iconP2.height / 2.5);
 		add(iconP2);
 
 		strumLineNotes.cameras = [camHUD];

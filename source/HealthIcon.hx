@@ -9,8 +9,9 @@ class HealthIcon extends FlxSprite
 	{
 		super();
 
-		frames = 'icons/$char'.getSparrowAtlas();
-		if (frames == null)
+		if ('icons/$char'.image().assetExists())
+			frames = 'icons/$char'.getSparrowAtlas();
+		else
 			frames = 'icons/none'.getSparrowAtlas();
 
 		animation.addByPrefix('normal', 'normal', 24, true);
@@ -19,7 +20,6 @@ class HealthIcon extends FlxSprite
 		playAnim(NORMAL);
 
 		flipX = isPlayer;
-
 		antialiasing = true;
 		scrollFactor.set();
 	}

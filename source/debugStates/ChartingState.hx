@@ -95,11 +95,6 @@ class ChartingState extends MusicBeatState
 
 		leftIcon = new HealthIcon('none');
 		rightIcon = new HealthIcon('none');
-		leftIcon.scrollFactor.set(1, 1);
-		rightIcon.scrollFactor.set(1, 1);
-
-		leftIcon.setGraphicSize(0, 45);
-		rightIcon.setGraphicSize(0, 45);
 
 		add(leftIcon);
 		add(rightIcon);
@@ -743,6 +738,7 @@ class ChartingState extends MusicBeatState
 	function changeSection(sec:Int = 0, ?updateMusic:Bool = true):Void
 	{
 		trace('changing section' + sec);
+		updateHeads();
 
 		if (_song.notes[sec] != null)
 		{
@@ -805,17 +801,19 @@ class ChartingState extends MusicBeatState
 	{
 		if (check_mustHitSection.checked)
 		{
-			leftIcon = new HealthIcon(new Character(0, 0, _song.player1).iconPath);
+			leftIcon = new HealthIcon(new Character(0, 0, _song.player1).iconPath, true);
 			rightIcon = new HealthIcon(new Character(0, 0, _song.player2).iconPath);
 		}
 		else
 		{
 			leftIcon = new HealthIcon(new Character(0, 0, _song.player2).iconPath);
-			rightIcon = new HealthIcon(new Character(0, 0, _song.player1).iconPath);
+			rightIcon = new HealthIcon(new Character(0, 0, _song.player1).iconPath, true);
 		}
 
-		leftIcon.setPosition(0, gridBG.y - leftIcon.height);
-		rightIcon.setPosition(gridBG.width / 2, gridBG.y - rightIcon.height);
+		leftIcon.scrollFactor.set(1, 1);
+		rightIcon.scrollFactor.set(1, 1);
+		leftIcon.setPosition(leftIcon.width / 2, gridBG.y - leftIcon.height * 4);
+		rightIcon.setPosition(gridBG.width / 2, gridBG.y - rightIcon.height * 4);
 	}
 
 	function updateNoteUI():Void
