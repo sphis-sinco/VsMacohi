@@ -145,10 +145,10 @@ class ChartingState extends MusicBeatState
 		add(dummyArrow);
 
 		var tabs = [
-			{name: "Characters", label: 'Characters'},
-			{name: "Song", label: 'Song'},
-			{name: "Section", label: 'Section'},
-			{name: "Note", label: 'Note'}
+			{name: "2", label: 'Characters'},
+			{name: "1", label: 'Song'},
+			{name: "3", label: 'Section'},
+			{name: "4", label: 'Note'}
 		];
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
@@ -157,6 +157,10 @@ class ChartingState extends MusicBeatState
 		UI_box.x = FlxG.width / 2;
 		UI_box.y = 20;
 		add(UI_box);
+
+		UI_box.scrollFactor.set();
+
+		FlxG.camera.follow(strumLine);
 
 		addCharactersUI();
 		addSongUI();
@@ -172,11 +176,11 @@ class ChartingState extends MusicBeatState
 	function addCharactersUI():Void
 	{
 		var tab_group_characters = new FlxUI(null, UI_box);
-		tab_group_characters.name = "Characters";
+		tab_group_characters.name = "2";
 
 		var characters:Array<String> = CharacterList.get;
 
-		var player1DropDown = new FlxUIDropDownMenu(10, 128, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		var player1DropDown = new FlxUIDropDownMenu(10, 32, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player1 = characters[Std.parseInt(character)];
 		});
@@ -194,6 +198,8 @@ class ChartingState extends MusicBeatState
 		tab_group_characters.add(player1DropDown);
 		tab_group_characters.add(new FlxText(player2DropDown.x, player2DropDown.y - 16, 0, "Player 2", 8));
 		tab_group_characters.add(player2DropDown);
+
+		UI_box.addGroup(tab_group_characters);
 	}
 
 	function addSongUI():Void
@@ -258,7 +264,7 @@ class ChartingState extends MusicBeatState
 		};
 
 		var tab_group_song = new FlxUI(null, UI_box);
-		tab_group_song.name = "Song";
+		tab_group_song.name = "1";
 		tab_group_song.add(UI_songTitle);
 
 		tab_group_song.add(check_voices);
@@ -277,9 +283,6 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(stageDropDown);
 
 		UI_box.addGroup(tab_group_song);
-		UI_box.scrollFactor.set();
-
-		FlxG.camera.follow(strumLine);
 	}
 
 	var stepperLength:FlxUINumericStepper;
@@ -291,7 +294,7 @@ class ChartingState extends MusicBeatState
 	function addSectionUI():Void
 	{
 		var tab_group_section = new FlxUI(null, UI_box);
-		tab_group_section.name = 'Section';
+		tab_group_section.name = '3';
 
 		stepperLength = new FlxUINumericStepper(10, 10, 4, 0, 0, 999, 0);
 		stepperLength.value = _song.notes[curSection].lengthInSteps;
@@ -350,7 +353,7 @@ class ChartingState extends MusicBeatState
 	function addNoteUI():Void
 	{
 		var tab_group_note = new FlxUI(null, UI_box);
-		tab_group_note.name = 'Note';
+		tab_group_note.name = '4';
 
 		stepperSusLength = new FlxUINumericStepper(10, 10, Conductor.stepCrochet / 2, 0, 0, Conductor.stepCrochet * 16);
 		stepperSusLength.value = 0;
