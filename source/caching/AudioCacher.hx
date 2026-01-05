@@ -1,5 +1,6 @@
 package caching;
 
+import global.SongList;
 import flixel.FlxG;
 import lime.utils.Assets;
 
@@ -7,7 +8,7 @@ class AudioCacher
 {
 	public static function cacheSongs()
 	{
-		var songs = CoolUtil.splitTextfileIntoArray('freeplaySonglist'.txt());
+		var songs = SongList.get;
 		for (song in songs)
 			cacheSong(song);
 	}

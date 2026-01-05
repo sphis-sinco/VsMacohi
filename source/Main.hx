@@ -81,6 +81,9 @@ class Main extends Sprite
 		}
 		FlxSprite.defaultAntialiasing = true;
 
+		global.WeekList.get;
+		global.SongList.get;
+
 		AudioCacher.cacheSongs();
 		ImageCacher.cacheUI();
 

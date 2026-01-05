@@ -1,5 +1,6 @@
 package;
 
+import global.SongList;
 import caching.AudioCacher;
 import flash.text.TextField;
 import flixel.FlxG;
@@ -31,7 +32,7 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		songs = CoolUtil.splitTextfileIntoArray('freeplaySonglist'.txt());
+		songs = SongList.get;
 
 		// LOAD MUSIC
 

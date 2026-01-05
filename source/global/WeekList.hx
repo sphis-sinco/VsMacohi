@@ -16,7 +16,7 @@ class WeekList
 	{
 		var returnData = [];
 
-		returnData = ["tutorial"];
+		returnData = CoolUtil.splitTextfileIntoArray('weekList'.txt());
 		#if sys
 		var weeks = FileSystem.readDirectory("assets/data/weeks/");
 
