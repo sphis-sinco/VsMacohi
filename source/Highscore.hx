@@ -52,21 +52,6 @@ class Highscore
 		return daSong;
 	}
 
-	public static function unformatSong(song:String):String
-	{
-		var daSong:String = song;
-
-		for (diff in diffs)
-			if (daSong.endsWith(diff))
-			{
-				daSong.replace(diff, '');
-				break;
-			}
-
-		trace(daSong);
-		return daSong;
-	}
-
 	public static function getScore(song:String, diff:Int):Int
 	{
 		if (!songScores.exists(formatSong(song, diff)))

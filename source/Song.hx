@@ -44,14 +44,16 @@ class Song
 		this.bpm = bpm;
 	}
 
-	public static function loadFromJson(jsonInput:String):SwagSong
+	public static function loadFromJson(songNAME:String, songJSON:String):SwagSong
 	{
-		var rawJson = (((Highscore.unformatSong(jsonInput)).songJson()).getTextContent()).trim();
+		var path:String = 'songs/$songNAME/$songJSON'.json();
+
+		var rawJson = path.getTextContent().trim();
 
 		while (!rawJson.endsWith("}"))
 			rawJson = rawJson.substr(0, rawJson.length - 1);
 
-		return parseJSONshit(rawJson, Highscore.unformatSong(jsonInput).songJson());
+		return parseJSONshit(rawJson, path);
 	}
 
 	public static function parseJSONshit(rawJson:String, ?path:String):SwagSong
