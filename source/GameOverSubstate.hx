@@ -1,5 +1,6 @@
 package;
 
+import menus.storymode.StoryMenuState;
 import characters.Boyfriend;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -19,17 +20,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		var daStage = PlayState.curStage;
 		var daBf:String = '';
-		switch (daStage)
-		{
-			case 'school':
-				stageSuffix = '-pixel';
-				daBf = 'bf-pixel-dead';
-			case 'schoolEvil':
-				stageSuffix = '-pixel';
-				daBf = 'bf-pixel-dead';
-			default:
-				daBf = 'bf';
-		}
+		daBf = 'bf';
 
 		super();
 
