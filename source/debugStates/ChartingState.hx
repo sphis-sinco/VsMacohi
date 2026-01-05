@@ -796,6 +796,9 @@ class ChartingState extends MusicBeatState
 
 	function updateSideTexts():Void
 	{
+		leftSide.fieldWidth = (gridBG.width / 2);
+		rightSide.fieldWidth = (gridBG.width / 2);
+
 		leftSide.alignment = CENTER;
 		rightSide.alignment = CENTER;
 
@@ -815,9 +818,6 @@ class ChartingState extends MusicBeatState
 			leftSide.text = 'opponent';
 			rightSide.text = 'player';
 		}
-
-		leftSide.x += leftSide.width / 2;
-		rightSide.x += rightSide.width / 2;
 	}
 
 	function updateNoteUI():Void
