@@ -17,7 +17,7 @@ class ImageCacher
 			'menuBG',
 			'menuBGBlue',
 			'menuBGMagenta',
-			'menuBGDesat',
+			'menuDesat',
 			'NOTE_assets',
 		])
 			cacheImage(uiAsset);
