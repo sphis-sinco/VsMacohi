@@ -36,7 +36,7 @@ class Conductor
 	{
 		bpmChangeMap = [];
 
-		var curbpm:Float = song.bpm;
+		var curBPM:Float = song.bpm;
 		var totalSteps:Int = 0;
 		var totalPos:Float = 0;
 		for (i in 0...song.notes.length)
@@ -61,7 +61,7 @@ class Conductor
 
 	public static function changeBPM(newbpm:Float)
 	{
-		bpm = newBpm;
+		bpm = newbpm;
 
 		crochet = ((60 / bpm) * 1000);
 		stepCrochet = crochet / 4;

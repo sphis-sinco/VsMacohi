@@ -120,7 +120,7 @@ class ChartingState extends MusicBeatState
 		FlxG.mouse.visible = true;
 		// FlxG.save.bind('funkin', 'ninjamuffin99');
 
-		tempBpm = _song.bpm;
+		tempbpm = _song.bpm;
 
 		addSection();
 
@@ -416,7 +416,7 @@ class ChartingState extends MusicBeatState
 			}
 			else if (wname == 'song_bpm')
 			{
-				tempBpm = Std.int(nums.value);
+				tempbpm = Std.int(nums.value);
 				Conductor.mapBPMChanges(_song);
 				Conductor.changeBPM(Std.int(nums.value));
 			}
@@ -453,9 +453,9 @@ class ChartingState extends MusicBeatState
 		for (i in 0...curSection)
 		{
 			if (_song.notes[i].changeBPM) {
-				daBPM = _song.notes[i].bpm;
+				dabpm = _song.notes[i].bpm;
 			}
-			daPos += 4 * (1000 * 60 / daBPM);
+			daPos += 4 * (1000 * 60 / dabpm);
 		}
 		return daPos;
 	}
@@ -630,7 +630,7 @@ class ChartingState extends MusicBeatState
 			}
 		}
 
-		_song.bpm = tempBpm;
+		_song.bpm = tempbpm;
 
 		/* if (FlxG.keys.justPressed.UP)
 				Conductor.changeBPM(Conductor.bpm + 1);
@@ -816,8 +816,8 @@ class ChartingState extends MusicBeatState
 			var dabpm:Float = _song.bpm;
 			for (i in 0...curSection)
 				if (_song.notes[i].changeBPM)
-					daBPM = _song.notes[i].bpm;
-			Conductor.changeBPM(daBPM);
+					dabpm = _song.notes[i].bpm;
+			Conductor.changeBPM(dabpm);
 		}
 
 		/* // PORT BULLSHIT, INCASE THERE'S NO SUSTAIN DATA FOR A NOTE
