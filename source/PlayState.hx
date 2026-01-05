@@ -606,11 +606,6 @@ class PlayState extends MusicBeatState
 
 		iconP2.animation.curAnim.curFrame = (healthBar.percent > 80) ? 1 : 0;
 
-		#if debug
-		if (FlxG.keys.justPressed.EIGHT)
-			FlxG.switchState(() -> new AnimationDebug(SONG.player2));
-		#end
-
 		if (startingSong)
 		{
 			if (startedCountdown)
