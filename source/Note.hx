@@ -157,15 +157,11 @@ class Note extends FlxSprite
 			canBeHit = false;
 
 			if (strumTime <= Conductor.songPosition)
-			{
 				wasGoodHit = true;
-			}
 		}
 
 		if (tooLate)
-		{
 			if (alpha > 0.3)
-				alpha = 0.3;
-		}
+				alpha -= 1 - ((strumTime - Conductor.songPosition) / 10);
 	}
 }
