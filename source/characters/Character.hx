@@ -109,7 +109,7 @@ class Character extends CharacterBase
 
 		frames = Paths.getSparrowAtlas(character_data.atlasPath);
 
-		this.antialiasing = character_data?.antialiasing ?? false;
+		this.antialiasing = character_data?.antialiasing ?? true;
 
 		for (a in character_data.animations)
 		{
