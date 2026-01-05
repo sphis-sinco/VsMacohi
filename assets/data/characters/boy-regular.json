@@ -1,80 +1,80 @@
 {
-    "flipX": true,
-    "notes": [],
-    "tags": [
-        {
-            "name": "as_player_flip_sideways_singing_directions",
-            "value": false
-        }
-    ],
-    "atlasPath": "characters/boy-regular",
-    "flipY": false,
-    "iconPath": "bf",
-    "animations": [
-        {
-            "flipX": false,
-            "prefix": "BOY IDLE",
-            "name": "idle",
-            "offsets": [
-                0,
-                0
-            ],
-            "looped": true,
-            "flipY": false,
-            "type": "prefix",
-            "frameRate": 24
-        },
-        {
-            "flipX": false,
-            "prefix": "BOY LEFT",
-            "name": "singLEFT",
-            "offsets": [
-                -100,
-                -8
-            ],
-            "looped": false,
-            "flipY": false,
-            "type": "prefix",
-            "frameRate": 24
-        },
-        {
-            "flipX": false,
-            "prefix": "BOY DOWN",
-            "name": "singDOWN",
-            "offsets": [
-                -150,
-                -70
-            ],
-            "looped": false,
-            "flipY": false,
-            "type": "prefix",
-            "frameRate": 24
-        },
-        {
-            "flipX": false,
-            "prefix": "BOY UP",
-            "name": "singUP",
-            "offsets": [
-                -210,
-                -10
-            ],
-            "looped": false,
-            "flipY": false,
-            "type": "prefix",
-            "frameRate": 24
-        },
-        {
-            "flipX": false,
-            "prefix": "BOY RIGHT",
-            "name": "singRIGHT",
-            "offsets": [
-                -162,
-                6
-            ],
-            "looped": false,
-            "flipY": false,
-            "type": "prefix",
-            "frameRate": 24
-        }
-    ]
+	"flipX": true,
+	"notes": [],
+	"tags": [
+		{
+			"name": "as_player_flip_sideways_singing_directions",
+			"value": false
+		}
+	],
+	"atlasPath": "characters/boy-regular",
+	"flipY": false,
+	"iconPath": "bf",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "BOY IDLE",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": true,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BOY LEFT",
+			"name": "singLEFT",
+			"offsets": [
+				-94,
+				-10
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BOY DOWN",
+			"name": "singDOWN",
+			"offsets": [
+				-150,
+				-60
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BOY UP",
+			"name": "singUP",
+			"offsets": [
+				-170,
+				32
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BOY RIGHT",
+			"name": "singRIGHT",
+			"offsets": [
+				-164,
+				4
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		}
+	]
 }
