@@ -40,7 +40,8 @@ class AnimationDebug extends FlxState
 
 	override function create()
 	{
-		FlxG.sound.music.stop();
+		if (FlxG.sound.music.playing)
+			FlxG.sound.music.stop();
 
 		var gridBG:FlxSprite = FlxGridOverlay.create(10, 10);
 		gridBG.scrollFactor.set(0.5, 0.5);
