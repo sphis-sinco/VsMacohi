@@ -766,7 +766,7 @@ class PlayState extends MusicBeatState
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
-				daNote.active = !daNote.y > FlxG.height;
+				daNote.active = !(daNote.y > FlxG.height);
 				daNote.visible = daNote.active;
 
 				daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
@@ -973,10 +973,10 @@ class PlayState extends MusicBeatState
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
 		add(rating);
 
-			rating.setGraphicSize(Std.int(rating.width * 0.7));
-			rating.antialiasing = true;
-			comboSpr.setGraphicSize(Std.int(comboSpr.width * 0.7));
-			comboSpr.antialiasing = true;
+		rating.setGraphicSize(Std.int(rating.width * 0.7));
+		rating.antialiasing = true;
+		comboSpr.setGraphicSize(Std.int(comboSpr.width * 0.7));
+		comboSpr.antialiasing = true;
 
 		comboSpr.updateHitbox();
 		rating.updateHitbox();
@@ -1085,46 +1085,60 @@ class PlayState extends MusicBeatState
 
 			if (possibleNotes.length > 0)
 			{
-				var daNote = possibleNotes[0];
-
-				if (perfectMode)
-					noteCheck(true, daNote);
-
-				// Jump notes
-				if (possibleNotes.length >= 2)
+				// New System
+				for (daNote in possibleNotes)
 				{
-					if (possibleNotes[0].strumTime == possibleNotes[1].strumTime)
-					{
-						for (coolNote in possibleNotes)
-						{
-							if (controlArray[coolNote.noteData])
-								goodNoteHit(coolNote);
-							else
-							{
-								var inIgnoreList:Bool = false;
-								for (shit in 0...ignoreList.length)
-									if (controlArray[ignoreList[shit]])
-										inIgnoreList = true;
-								if (!inIgnoreList)
-									badNoteCheck();
-							}
-						}
-					}
-					else if (possibleNotes[0].noteData == possibleNotes[1].noteData)
-						noteCheck(controlArray[daNote.noteData], daNote);
-					else
-						for (coolNote in possibleNotes)
-							noteCheck(controlArray[coolNote.noteData], coolNote);
-				}
-				else // regular notes?
+					if (perfectMode)
+						noteCheck(true, daNote);
+
 					noteCheck(controlArray[daNote.noteData], daNote);
 
-				if (daNote.wasGoodHit)
-				{
-					daNote.kill();
-					notes.remove(daNote, true);
-					daNote.destroy();
+					if (daNote.wasGoodHit)
+					{
+						daNote.kill();
+						notes.remove(daNote, true);
+						daNote.destroy();
+					}
 				}
+
+				// OLD SYSTEM!
+				/*
+					// Jump notes
+					if (possibleNotes.length >= 2)
+					{
+						if (possibleNotes[0].strumTime == possibleNotes[1].strumTime)
+						{
+							for (coolNote in possibleNotes)
+							{
+								if (controlArray[coolNote.noteData])
+									goodNoteHit(coolNote);
+								else
+								{
+									var inIgnoreList:Bool = false;
+									for (shit in 0...ignoreList.length)
+										if (controlArray[ignoreList[shit]])
+											inIgnoreList = true;
+									if (!inIgnoreList)
+										badNoteCheck();
+								}
+							}
+						}
+						else if (possibleNotes[0].noteData == possibleNotes[1].noteData)
+							noteCheck(controlArray[daNote.noteData], daNote);
+						else
+							for (coolNote in possibleNotes)
+								noteCheck(controlArray[coolNote.noteData], coolNote);
+					}
+					else // regular notes?
+						noteCheck(controlArray[daNote.noteData], daNote);
+
+					if (daNote.wasGoodHit)
+					{
+						daNote.kill();
+						notes.remove(daNote, true);
+						daNote.destroy();
+					}
+				 */
 			}
 			else
 				badNoteCheck();
