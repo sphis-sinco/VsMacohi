@@ -18,11 +18,20 @@ class AudioCacher
 		var instPath = song.inst();
 		var voicesPath = song.voices();
 
-		trace('Caching... $song ' + '(${(Assets.exists(instPath)) ? 'inst' : 'no-inst'}/${(Assets.exists(voicesPath)) ? 'voices' : 'no-voices'})');
+		trace('Song caching : $song ' + '(${(Assets.exists(instPath)) ? 'inst' : 'no-inst'}/${(Assets.exists(voicesPath)) ? 'voices' : 'no-voices'})');
 
-		if (Assets.exists(instPath))
-			FlxG.sound.cache(instPath);
-		if (Assets.exists(voicesPath))
-			FlxG.sound.cache(voicesPath);
+		if (instPath.assetExists())
+			cacheAudio(instPath);
+		if (voicesPath.assetExists())
+			cacheAudio(instPath);
+	}
+
+	public static function cacheAudio(audio:String)
+	{
+		if (audio.assetExists())
+		{
+			trace('Audio caching : $audio');
+			FlxG.sound.cache(audio);
+		}
 	}
 }

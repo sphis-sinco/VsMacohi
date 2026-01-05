@@ -25,7 +25,10 @@ class ImageCacher
 
 	public static function cacheImage(img:String)
 	{
-		trace('Caching $img');
-		FlxG.bitmap.add(img.image());
+		if (img.image().assetExists())
+		{
+			trace('Image caching : ${img.image()}');
+			FlxG.bitmap.add(img.image());
+		}
 	}
 }

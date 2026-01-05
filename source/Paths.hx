@@ -1,6 +1,7 @@
 package;
 
 #if sys
+import sys.FileSystem;
 import sys.io.File;
 #end
 import lime.utils.Assets;
@@ -103,5 +104,14 @@ class Paths
 		#end
 
 		return Assets.getText(path);
+	}
+
+	static public function assetExists(path:String):Bool
+	{
+		#if sys
+		return FileSystem.exists(path);
+		#end
+
+		return Assets.exists(path);
 	}
 }
