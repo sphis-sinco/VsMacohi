@@ -1,5 +1,6 @@
 package;
 
+import debugStates.AnimationDebug;
 import caching.ImageCacher;
 import flixel.sound.FlxSound;
 import flixel.FlxG;
@@ -54,7 +55,9 @@ class TitleState extends MusicBeatState
 
 		Highscore.load();
 
-		#if FREEPLAY
+		#if ANIMATION_DEBUG
+		FlxG.switchState(() -> new AnimationDebug('boy'));
+		#elseif FREEPLAY
 		FlxG.switchState(() -> new FreeplayState());
 		#elseif CHARTING
 		FlxG.switchState(() -> new ChartingState());

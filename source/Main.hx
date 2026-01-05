@@ -79,11 +79,6 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
-
-		#if !debug
-		initialState = TitleState;
-		#end
-
 		FlxSprite.defaultAntialiasing = true;
 
 		AudioCacher.cacheSongs();
