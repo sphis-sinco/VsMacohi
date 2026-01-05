@@ -1028,56 +1028,63 @@ class PlayState extends MusicBeatState
 				}
 			});
 
+			var doOldSystem:Bool = false;
+			var doNewSystem:Bool = true;
+
 			if (possibleNotes.length > 0)
 			{
 				// New System
-				for (daNote in possibleNotes)
-				{
-					if (perfectMode)
-						noteCheck(true, daNote);
-
-					noteCheck(controlArray[daNote.noteData], daNote);
-
-					if (daNote.wasGoodHit)
+				if (doNewSystem)
+					for (daNote in possibleNotes)
 					{
-						daNote.kill();
-						notes.remove(daNote, true);
-						daNote.destroy();
+						if (perfectMode)
+							noteCheck(true, daNote);
+
+						noteCheck(controlArray[daNote.noteData], daNote);
+
+						if (daNote.wasGoodHit)
+						{
+							daNote.kill();
+							notes.remove(daNote, true);
+							daNote.destroy();
+
+							// doOldSystem = false;
+						}
 					}
-				}
 
 				// old system
 
 				var daNote = possibleNotes[0];
 
-				// Jump notes
-				if (possibleNotes.length >= 2)
-				{
-					if (possibleNotes[0].strumTime == possibleNotes[1].strumTime)
+				if (doOldSystem)
+					// Jump notes
+					if (possibleNotes.length >= 2)
 					{
-						for (coolNote in possibleNotes)
+						if (possibleNotes[0].strumTime == possibleNotes[1].strumTime)
 						{
-							if (controlArray[coolNote.noteData])
-								goodNoteHit(coolNote);
-							else
+							for (coolNote in possibleNotes)
 							{
-								var inIgnoreList:Bool = false;
-								for (shit in 0...ignoreList.length)
-									if (controlArray[ignoreList[shit]])
-										inIgnoreList = true;
-								if (!inIgnoreList)
-									badNoteCheck();
+								if (controlArray[coolNote.noteData])
+									goodNoteHit(coolNote);
+								else
+								{
+									var inIgnoreList:Bool = false;
+									for (shit in 0...ignoreList.length)
+										if (controlArray[ignoreList[shit]])
+											inIgnoreList = true;
+									if (!inIgnoreList)
+										badNoteCheck();
+								}
 							}
 						}
+						else if (possibleNotes[0].noteData == possibleNotes[1].noteData)
+							noteCheck(controlArray[daNote.noteData], daNote);
+						else
+							for (coolNote in possibleNotes)
+								noteCheck(controlArray[coolNote.noteData], coolNote);
 					}
-					else if (possibleNotes[0].noteData == possibleNotes[1].noteData)
+					else // regular notes?
 						noteCheck(controlArray[daNote.noteData], daNote);
-					else
-						for (coolNote in possibleNotes)
-							noteCheck(controlArray[coolNote.noteData], coolNote);
-				}
-				else // regular notes?
-					noteCheck(controlArray[daNote.noteData], daNote);
 
 				if (daNote.wasGoodHit)
 				{
