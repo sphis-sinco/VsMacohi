@@ -252,7 +252,7 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat('vcr.ttf'.font(), 16, FlxColor.WHITE, RIGHT);
+		scoreTxt.setFormat('vcr.ttf'.font(), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 
