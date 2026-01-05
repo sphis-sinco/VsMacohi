@@ -25,8 +25,8 @@ class StageList
 
 		for (stage in stages)
 			if (!FileSystem.isDirectory("assets/data/stages/" + stage))
-				if (!returnData.contains(stage.replace('.json', '')))
-					returnData.push(stage.replace('.json', ''));
+				if (!returnData.contains(stage.replace('.hxc', '')))
+					returnData.push(stage.replace('.hxc', ''));
 		#end
 
 		for (stage in returnData)
