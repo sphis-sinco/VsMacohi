@@ -12,7 +12,6 @@ class ImageCacher
 			'campaign_menu_UI_characters',
 			'FNF_main_menu_assets',
 			'healthBar',
-			'iconGrid',
 			'logoBumpin',
 			'menuBG',
 			'menuBGBlue',
