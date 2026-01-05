@@ -796,6 +796,9 @@ class ChartingState extends MusicBeatState
 
 	function updateSideTexts():Void
 	{
+		leftSide.alignment = CENTER;
+		rightSide.alignment = CENTER;
+
 		leftSide.x = gridBG.x;
 		leftSide.y = gridBG.y - 32;
 
