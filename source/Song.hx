@@ -46,17 +46,23 @@ class Song
 
 	public static function loadFromJson(jsonInput:String):SwagSong
 	{
-		var rawJson = ((Highscore.unformatSong(jsonInput)).songJson()).getTextContent().trim();
+		var rawJson = (((Highscore.unformatSong(jsonInput)).songJson()).getTextContent()).trim();
 
 		while (!rawJson.endsWith("}"))
 			rawJson = rawJson.substr(0, rawJson.length - 1);
 
-		return parseJSONshit(rawJson, jsonInput.songJson());
+		return parseJSONshit(rawJson, Highscore.unformatSong(jsonInput).songJson());
 	}
 
 	public static function parseJSONshit(rawJson:String, ?path:String):SwagSong
 	{
-		var swagShit:SwagSong = cast Json.parse(rawJson).song;
+		var rawJsonJson = Json.parse(rawJson);
+		var swagShit:SwagSong;
+
+		if (Reflect.hasField(rawJsonJson, 'bpm'))
+			swagShit = cast (rawJsonJson);
+		else
+			swagShit = cast (rawJsonJson).song;
 		swagShit.validScore = true;
 
 		convertChart(swagShit, path);

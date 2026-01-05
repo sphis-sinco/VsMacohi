@@ -55,12 +55,13 @@ class Highscore
 
 	public static function unformatSong(song:String):String
 	{
-		var daSong:String = song;
+		var daSong:String = '';
 
 		var i = 0;
-		while (i < 3)
+		for (stupid in song.split('-'))
 		{
-			daSong.replace(formatSong('', i), '');
+			if (i != song.split('-').length - 1)
+				daSong += stupid;
 			i++;
 		}
 
