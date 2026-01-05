@@ -25,7 +25,7 @@ class Main extends Sprite
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 
 	#if web
-	var framerate:Int = 144; // How many frames per second the game should run at.
+	var framerate:Int = 60; // How many frames per second the game should run at.
 	#else
 	var framerate:Int = 144; // How many frames per second the game should run at.
 
