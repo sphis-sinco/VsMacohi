@@ -83,21 +83,12 @@ class ChartingState extends MusicBeatState
 
 	var vocals:FlxSound;
 
-	var leftIcon:HealthIcon;
-	var rightIcon:HealthIcon;
-
 	override function create()
 	{
 		curSection = lastSection;
 
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
 		add(gridBG);
-
-		leftIcon = new HealthIcon('none');
-		rightIcon = new HealthIcon('none');
-
-		add(leftIcon);
-		add(rightIcon);
 
 		var gridBlackLine:FlxSprite = new FlxSprite(gridBG.x + gridBG.width / 2).makeGraphic(2, Std.int(gridBG.height), FlxColor.BLACK);
 		add(gridBlackLine);
@@ -163,7 +154,10 @@ class ChartingState extends MusicBeatState
 		add(curRenderedNotes);
 		add(curRenderedSustains);
 
-		updateHeads();
+
+		add(leftSide);
+		add(rightSide);
+		updateSideTexts();
 
 		super.create();
 	}
@@ -178,7 +172,7 @@ class ChartingState extends MusicBeatState
 		var player1DropDown = new FlxUIDropDownMenu(10, 32, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player1 = characters[Std.parseInt(character)];
-			updateHeads();
+			updateSideTexts();
 		});
 		player1DropDown.selectedLabel = _song.player1;
 
@@ -186,7 +180,7 @@ class ChartingState extends MusicBeatState
 			FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player2 = characters[Std.parseInt(character)];
-			updateHeads();
+			updateSideTexts();
 		});
 
 		player2DropDown.selectedLabel = _song.player2;
@@ -421,7 +415,7 @@ class ChartingState extends MusicBeatState
 				case 'Must hit section':
 					_song.notes[curSection].mustHitSection = check.checked;
 
-					updateHeads();
+					updateSideTexts();
 
 				case 'Change BPM':
 					_song.notes[curSection].changeBPM = check.checked;
@@ -738,7 +732,7 @@ class ChartingState extends MusicBeatState
 	function changeSection(sec:Int = 0, ?updateMusic:Bool = true):Void
 	{
 		trace('changing section' + sec);
-		updateHeads();
+		updateSideTexts();
 
 		if (_song.notes[sec] != null)
 		{
@@ -794,26 +788,33 @@ class ChartingState extends MusicBeatState
 		check_changeBPM.checked = sec.changeBPM;
 		stepperSectionBPM.value = sec.bpm;
 
-		updateHeads();
+		updateSideTexts();
 	}
 
-	function updateHeads():Void
+	var leftSide:FlxText = new FlxText(0,0,0,'',16);
+	var rightSide:FlxText = new FlxText(0,0,0,'',16);
+
+	function updateSideTexts():Void
 	{
+		leftSide.x = gridBG.x;
+		leftSide.y = gridBG.y - 32;
+
+		rightSide.x = gridBG.x + (gridBG.width / 2);
+		rightSide.y = gridBG.y - 32;
+
 		if (check_mustHitSection.checked)
 		{
-			leftIcon = new HealthIcon(new Character(0, 0, _song.player1).iconPath, true);
-			rightIcon = new HealthIcon(new Character(0, 0, _song.player2).iconPath);
+			leftSide.text = 'player';
+			rightSide.text = 'opponent';
 		}
 		else
 		{
-			leftIcon = new HealthIcon(new Character(0, 0, _song.player2).iconPath);
-			rightIcon = new HealthIcon(new Character(0, 0, _song.player1).iconPath, true);
+			leftSide.text = 'opponent';
+			rightSide.text = 'player';
 		}
 
-		leftIcon.scrollFactor.set(1, 1);
-		rightIcon.scrollFactor.set(1, 1);
-		leftIcon.setPosition(leftIcon.width / 2, gridBG.y - leftIcon.height * 4);
-		rightIcon.setPosition(gridBG.width / 2, gridBG.y - rightIcon.height * 4);
+		leftSide.x += leftSide.width / 2;
+		rightSide.x += rightSide.width / 2;
 	}
 
 	function updateNoteUI():Void
