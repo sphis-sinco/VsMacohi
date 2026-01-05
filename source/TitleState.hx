@@ -1,5 +1,6 @@
 package;
 
+import caching.CacheManager;
 import debugStates.AnimationDebug;
 import caching.ImageCacher;
 import flixel.sound.FlxSound;
