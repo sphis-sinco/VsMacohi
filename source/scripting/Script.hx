@@ -80,4 +80,17 @@ class Script extends Iris
 		for (key => value in getDefaultVariables())
 			set(key, value);
 	}
+
+	override function call(fun:String, ?args:Array<Dynamic>):IrisCall
+	{
+		if (interp != null)
+		{
+			var method:Dynamic = interp.variables.get(fun); // function signature
+
+			if (!Reflect.isFunction(method) || method == null)
+				return null;
+		}
+
+		return super.call(fun, args);
+	}
 }

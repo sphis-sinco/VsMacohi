@@ -131,7 +131,7 @@ class PlayState extends MusicBeatState
 		stageScript = new StageScript(SONG.stage, this);
 
 		callOnScripts('preCreate');
-		
+
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
@@ -1381,8 +1381,12 @@ class PlayState extends MusicBeatState
 		callOnScripts('makeStageFront');
 	}
 
-	public function callOnScripts(method:String, ?params:Array<Dynamic>)
+	public function callOnScripts(method:String, ?params:Array<Dynamic>):Map<String, Dynamic>
 	{
-		stageScript.call(method, params);
+		var returnValues:Map<String, Dynamic> = [];
+
+		returnValues.set('stage', stageScript.call(method, params));
+
+		return returnValues;
 	}
 }
