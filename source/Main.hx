@@ -1,5 +1,7 @@
 package;
 
+import characters.Character;
+import flixel.FlxG;
 import caching.ImageCacher;
 import caching.AudioCacher;
 import flixel.FlxSprite;
@@ -79,7 +81,16 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
-		
+
+		FlxG.signals.postUpdate.add(function()
+		{
+			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.A)
+			{
+				trace('cleared character cache');
+				Character.characters.clear();
+			}
+		});
+
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
 
 		#if !mobile
