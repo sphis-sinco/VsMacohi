@@ -42,13 +42,15 @@
 
 	<assets path='example_mods' rename='mods' embed='false'/>
 
-	<assets path="assets/data" preload="true" />
-	<assets path="assets/images" preload="true" />
+	<library name="default"	preload="true" />
 
-	<assets path="assets/music" include="*.mp3" if="web" preload="true" />
-	<assets path="assets/music" include="*.ogg" unless="web" preload="true" />
-	<assets path="assets/sounds" include="*.mp3" if="web" preload="true" />
-	<assets path="assets/sounds" include="*.ogg" unless="web" preload="true" />
+	<assets path="assets/data" library="default" />
+	<assets path="assets/images" library="default" />
+
+	<assets path="assets/music" include="*.mp3" if="web" library="default" />
+	<assets path="assets/music" include="*.ogg" unless="web" library="default" />
+	<assets path="assets/sounds" include="*.mp3" if="web" library="default" />
+	<assets path="assets/sounds" include="*.ogg" unless="web" library="default" />
 
 	<assets path="CHANGELOG.md" rename='changelog.txt'/>
 
