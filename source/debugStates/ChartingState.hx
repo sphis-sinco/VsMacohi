@@ -1,5 +1,6 @@
 package debugStates;
 
+import characters.Character;
 import global.StageList;
 import global.CharacterList;
 import Section.SwagSection;
@@ -92,8 +93,8 @@ class ChartingState extends MusicBeatState
 		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 8, GRID_SIZE * 16);
 		add(gridBG);
 
-		leftIcon = new HealthIcon('bf');
-		rightIcon = new HealthIcon('dad');
+		leftIcon = new HealthIcon('none');
+		rightIcon = new HealthIcon('none');
 		leftIcon.scrollFactor.set(1, 1);
 		rightIcon.scrollFactor.set(1, 1);
 
@@ -169,6 +170,8 @@ class ChartingState extends MusicBeatState
 
 		add(curRenderedNotes);
 		add(curRenderedSustains);
+
+		updateHeads();
 
 		super.create();
 	}
@@ -803,13 +806,13 @@ class ChartingState extends MusicBeatState
 	{
 		if (check_mustHitSection.checked)
 		{
-			leftIcon.animation.play('bf');
-			rightIcon.animation.play('dad');
+			leftIcon.animation.play(new Character(0,0, _song.player1).iconPath);
+			rightIcon.animation.play(new Character(0,0,_song.player2).iconPath);
 		}
 		else
 		{
-			leftIcon.animation.play('dad');
-			rightIcon.animation.play('bf');
+			leftIcon.animation.play(new Character(0,0, _song.player2).iconPath);
+			rightIcon.animation.play(new Character(0,0,_song.player1).iconPath);
 		}
 	}
 

@@ -81,6 +81,8 @@ class Character extends CharacterBase
 		return char;
 	}
 
+	public var iconPath:String = 'none';
+
 	override function initChar(char:String)
 	{
 		super.initChar(char);
@@ -104,7 +106,7 @@ class Character extends CharacterBase
 		this.flipX = character_data?.flipX ?? false;
 		this.flipY = character_data?.flipY ?? false;
 
-		// this.iconPath = character_data?.iconPath ?? 'none';
+		this.iconPath = character_data?.iconPath ?? 'none';
 		// this.iconColor = FlxColor.fromString(character_data?.iconColor) ?? 0xFFFFFF;
 
 		frames = Paths.getSparrowAtlas(character_data.atlasPath);

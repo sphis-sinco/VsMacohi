@@ -9,7 +9,7 @@
 	],
 	"atlasPath": "characters/boy-regular",
 	"flipY": false,
-	"iconPath": "bf",
+	"iconPath": "boy",
 	"animations": [
 		{
 			"flipX": false,
