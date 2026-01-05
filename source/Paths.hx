@@ -13,42 +13,37 @@ class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 
-	static var currentLevel:String;
-
-	static public function setCurrentLevel(name:String)
+	static function getPath(file:String)
 	{
-		currentLevel = name.toLowerCase();
-	}
-
-	static function getPath(file:String, type:AssetType)
-	{
+		#if TRACE_PATHS
 		trace('assets/$file');
+		#end
 		return 'assets/$file';
 	}
 
-	inline static public function file(file:String, type:AssetType = TEXT)
+	inline static public function file(file:String)
 	{
-		return getPath(file, type);
+		return getPath(file);
 	}
 
 	inline static public function txt(key:String)
 	{
-		return getPath('data/$key.txt', TEXT);
+		return getPath('data/$key.txt');
 	}
 
 	inline static public function xml(key:String)
 	{
-		return getPath('data/$key.xml', TEXT);
+		return getPath('data/$key.xml');
 	}
 
 	inline static public function json(key:String)
 	{
-		return getPath('data/$key.json', TEXT);
+		return getPath('data/$key.json');
 	}
 
 	static public function sound(key:String)
 	{
-		return getPath('sounds/$key.$SOUND_EXT', SOUND);
+		return getPath('sounds/$key.$SOUND_EXT');
 	}
 
 	inline static public function soundRandom(key:String, min:Int, max:Int)
@@ -58,7 +53,7 @@ class Paths
 
 	inline static public function music(key:String)
 	{
-		return getPath('music/$key.$SOUND_EXT', MUSIC);
+		return getPath('music/$key.$SOUND_EXT');
 	}
 
 	inline static public function voices(song:String)
@@ -73,12 +68,12 @@ class Paths
 
 	inline static public function image(key:String)
 	{
-		return getPath('images/$key.png', IMAGE);
+		return getPath('images/$key.png');
 	}
 
 	inline static public function font(key:String)
 	{
-		return 'assets/fonts/$key';
+		return getPath('fonts/$key');
 	}
 
 	inline static public function getSparrowAtlas(key:String)
