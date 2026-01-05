@@ -322,8 +322,8 @@ class PlayState extends MusicBeatState
 			gf.dance();
 			boyfriend.playAnim('idle');
 
-			var introAlts:Array<String> = introAssets.get('default');
-			var altSuffix:String = "";
+			var introAlts:Array<String> = introAssets.get('default')[0];
+			var altSuffix:String = introAssets.get('default')[1];
 
 			for (value in introAssets.keys())
 				if (value == curStage)
