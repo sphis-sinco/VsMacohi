@@ -1304,7 +1304,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public var maxVocalOffsetTilResync:Float = 5.0;
+	public var maxVocalOffsetTilResync:Float = 20.0;
 
 	override function stepHit()
 	{
