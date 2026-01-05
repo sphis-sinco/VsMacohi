@@ -119,7 +119,7 @@ class Paths
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
 	}
 
-	inline static public function getTextContent(path:String):String
+	static public function getTextContent(path:String):String
 	{
 		#if sys
 		return File.getContent(path);
