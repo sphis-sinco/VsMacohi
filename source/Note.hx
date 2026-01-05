@@ -140,7 +140,7 @@ class Note extends FlxSprite
 
 		if (mustPress)
 		{
-			var maxOffsetFromTargetPosition = 0.3;
+			var maxOffsetFromTargetPosition = 0.5;
 			if (strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * maxOffsetFromTargetPosition)
 				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * maxOffsetFromTargetPosition))
 				canBeHit = true;
