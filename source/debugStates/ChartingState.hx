@@ -227,14 +227,14 @@ class ChartingState extends MusicBeatState
 		});
 		player1DropDown.selectedLabel = _song.player1;
 
-		var player2DropDown = new FlxUIDropDownMenu(player1DropDown.x + 130, player1DropDown.y, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		var player2DropDown = new FlxUIDropDownMenu(player1DropDown.x + player1DropDown.width + 16, player1DropDown.y, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player2 = characters[Std.parseInt(character)];
 		});
 
 		player2DropDown.selectedLabel = _song.player2;
 
-		var stageDropDown = new FlxUIDropDownMenu(player1DropDown.x, player1DropDown.y + 130, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
+		var stageDropDown = new FlxUIDropDownMenu(player1DropDown.x, player1DropDown.y + player1DropDown.height + 16, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
 		{
 			_song.player2 = stages[Std.parseInt(stage)];
 		});
@@ -252,16 +252,16 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(reloadSongJson);
 		tab_group_song.add(loadAutosaveBtn);
 
-		tab_group_song.add(new FlxText(stepperBPM.x + stepperBPM.width + 15, stepperBPM.y, 0, "BPM", 32));
+		tab_group_song.add(new FlxText(stepperBPM.x + stepperBPM.width + 16, stepperBPM.y, 0, "BPM", 16));
 		tab_group_song.add(stepperBPM);
-		tab_group_song.add(new FlxText(stepperSpeed.x + stepperSpeed.width + 15, stepperSpeed.y, 0, "Song Speed", 32));
+		tab_group_song.add(new FlxText(stepperSpeed.x + stepperSpeed.width + 16, stepperSpeed.y, 0, "Song Speed", 16));
 		tab_group_song.add(stepperSpeed);
 
-		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 50, 0, "Player 1", 32));
+		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 32, 0, "Player 1", 16));
 		tab_group_song.add(player1DropDown);
-		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 50, 0, "Player 2", 32));
+		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 32, 0, "Player 2", 16));
 		tab_group_song.add(player2DropDown);
-		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 50, 0, "Stage", 32));
+		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 32, 0, "Stage", 16));
 		tab_group_song.add(stageDropDown);
 
 		UI_box.addGroup(tab_group_song);
