@@ -1,5 +1,6 @@
 package;
 
+import scripting.StageScript;
 import caching.AudioCacher;
 import menus.storymode.StoryMenuState;
 import debugStates.AnimationDebug;
@@ -105,6 +106,8 @@ class PlayState extends MusicBeatState
 
 	var inCutscene:Bool = false;
 
+	public var stageScript:StageScript;
+
 	override public function create()
 	{
 		// var gameCam:FlxCamera = FlxG.camera;
@@ -124,6 +127,8 @@ class PlayState extends MusicBeatState
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial');
 
+		stageScript = new StageScript(SONG.stage, this);
+
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
@@ -139,7 +144,7 @@ class PlayState extends MusicBeatState
 			 */
 		}
 
-		addStage();
+		makeStageBack();
 
 		var gfVersion:String = 'gf';
 
@@ -175,6 +180,8 @@ class PlayState extends MusicBeatState
 
 		add(dad);
 		add(boyfriend);
+
+		makeStageFront();
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		doof.scrollFactor.set();
@@ -1269,7 +1276,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public var maxVocalOffsetTilResync:Float = #if web 60.0 #else 20.0 #end;
+	public var maxVocalOffsetTilResync:Float = 20.0;
 
 	override function stepHit()
 	{
@@ -1327,31 +1334,11 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 	}
 
-	public function addStage()
+	public function makeStageBack()
 	{
-		defaultCamZoom = 0.9;
-		curStage = 'stage';
-		var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic('stageback'.image());
-		bg.antialiasing = true;
-		bg.scrollFactor.set(0.9, 0.9);
-		bg.active = false;
-		add(bg);
+	}
 
-		var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic('stagefront'.image());
-		stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-		stageFront.updateHitbox();
-		stageFront.antialiasing = true;
-		stageFront.scrollFactor.set(0.9, 0.9);
-		stageFront.active = false;
-		add(stageFront);
-
-		var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic('stagecurtains'.image());
-		stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
-		stageCurtains.updateHitbox();
-		stageCurtains.antialiasing = true;
-		stageCurtains.scrollFactor.set(1.3, 1.3);
-		stageCurtains.active = false;
-
-		add(stageCurtains);
+	public function makeStageFront()
+	{
 	}
 }

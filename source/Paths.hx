@@ -26,19 +26,29 @@ class Paths
 		return getPath(file);
 	}
 
+	inline static public function dataFile(key:String)
+	{
+		return getPath('data/$key');
+	}
+
+	inline static public function hxc(key:String)
+	{
+		return dataFile('$key.hxc');
+	}
+
 	inline static public function txt(key:String)
 	{
-		return getPath('data/$key.txt');
+		return dataFile('$key.txt');
 	}
 
 	inline static public function xml(key:String)
 	{
-		return getPath('data/$key.xml');
+		return dataFile('$key.xml');
 	}
 
 	inline static public function json(key:String)
 	{
-		return getPath('data/$key.json');
+		return dataFile('$key.json');
 	}
 
 	static public function sound(key:String)

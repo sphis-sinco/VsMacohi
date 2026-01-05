@@ -9,6 +9,8 @@ using StringTools;
 
 typedef SwagSong =
 {
+	var stage:String;
+
 	var song:String;
 	var notes:Array<SwagSection>;
 	var bpm:Float;
@@ -57,26 +59,25 @@ class Song
 
 		// song chart conversion goes here
 
+		if (swagShit.songChartVersion == 1.0)
+			swagShit.stage = 'stage';
+
 		swagShit.songChartVersion = songChartVersion;
 
 		return swagShit;
 	}
 
-	public static var songChartVersion:Float = 1.0;
+	public static var songChartVersion:Float = 1.1;
 	public static var defaultSongChart:SwagSong = {
 		song: 'Test',
-		
+		stage: 'stage',
 		notes: [],
 		bpm: 150,
-		
 		needsVoices: true,
-		
 		player1: 'bf',
 		player2: 'dad',
-		
 		speed: 1,
 		validScore: false,
-
 		songChartVersion: songChartVersion
 	};
 }
