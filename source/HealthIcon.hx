@@ -16,6 +16,7 @@ class HealthIcon extends FlxSprite
 		animation.addByPrefix('normal', 'normal', 24, true);
 		animation.addByPrefix('lose', 'lose', 24, true);
 		animation.addByPrefix('win', 'win', 24, true);
+		playAnim(NORMAL);
 
 		flipX = isPlayer;
 

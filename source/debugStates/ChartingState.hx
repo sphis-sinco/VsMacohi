@@ -104,9 +104,6 @@ class ChartingState extends MusicBeatState
 		add(leftIcon);
 		add(rightIcon);
 
-		leftIcon.setPosition(0, -100);
-		rightIcon.setPosition(gridBG.width / 2, -100);
-
 		var gridBlackLine:FlxSprite = new FlxSprite(gridBG.x + gridBG.width / 2).makeGraphic(2, Std.int(gridBG.height), FlxColor.BLACK);
 		add(gridBlackLine);
 
@@ -186,6 +183,7 @@ class ChartingState extends MusicBeatState
 		var player1DropDown = new FlxUIDropDownMenu(10, 32, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player1 = characters[Std.parseInt(character)];
+			updateHeads();
 		});
 		player1DropDown.selectedLabel = _song.player1;
 
@@ -193,6 +191,7 @@ class ChartingState extends MusicBeatState
 			FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player2 = characters[Std.parseInt(character)];
+			updateHeads();
 		});
 
 		player2DropDown.selectedLabel = _song.player2;
@@ -806,14 +805,17 @@ class ChartingState extends MusicBeatState
 	{
 		if (check_mustHitSection.checked)
 		{
-			leftIcon.animation.play(new Character(0,0, _song.player1).iconPath);
-			rightIcon.animation.play(new Character(0,0,_song.player2).iconPath);
+			leftIcon = new HealthIcon(new Character(0, 0, _song.player1).iconPath);
+			rightIcon = new HealthIcon(new Character(0, 0, _song.player2).iconPath);
 		}
 		else
 		{
-			leftIcon.animation.play(new Character(0,0, _song.player2).iconPath);
-			rightIcon.animation.play(new Character(0,0,_song.player1).iconPath);
+			leftIcon = new HealthIcon(new Character(0, 0, _song.player2).iconPath);
+			rightIcon = new HealthIcon(new Character(0, 0, _song.player1).iconPath);
 		}
+
+		leftIcon.setPosition(0, gridBG.y - leftIcon.height);
+		rightIcon.setPosition(gridBG.width / 2, gridBG.y - rightIcon.height);
 	}
 
 	function updateNoteUI():Void
