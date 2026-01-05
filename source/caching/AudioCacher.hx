@@ -21,14 +21,8 @@ class AudioCacher
 		trace('Caching... $song ' + '(${(Assets.exists(instPath)) ? 'inst' : 'no-inst'}/${(Assets.exists(voicesPath)) ? 'voices' : 'no-voices'})');
 
 		if (Assets.exists(instPath))
-		{
-            FlxG.sound.cache(instPath);
-			Assets.loadAudioBuffer(instPath);
-		}
+			FlxG.sound.cache(instPath);
 		if (Assets.exists(voicesPath))
-		{
-            FlxG.sound.cache(voicesPath);
-			Assets.loadAudioBuffer(voicesPath);
-		}
+			FlxG.sound.cache(voicesPath);
 	}
 }

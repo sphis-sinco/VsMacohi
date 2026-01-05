@@ -32,6 +32,8 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		CacheManager.freeMemory();
+		
 		songs = SongList.get;
 
 		// LOAD MUSIC

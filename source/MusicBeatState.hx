@@ -1,5 +1,6 @@
 package;
 
+import caching.CacheManager;
 import caching.ImageCacher;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
@@ -24,8 +25,6 @@ class MusicBeatState extends FlxUIState
 	{
 		if (transIn != null)
 			trace('reg ' + transIn.region);
-
-		// ImageCacher.cacheUI();
 
 		super.create();
 	}

@@ -33,6 +33,8 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+		CacheManager.freeMemory();
+		
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
