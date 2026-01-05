@@ -29,7 +29,6 @@ class CacheManager
 		FlxG.bitmap.clearCache();
 		FlxG.bitmap.clearUnused();
 		Assets.cache.clear();
-        k
 		freeUnusedMemory();
 	}
 
