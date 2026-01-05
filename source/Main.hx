@@ -79,6 +79,7 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
+		
 		FlxSprite.defaultAntialiasing = true;
 
 		global.WeekList.get;
