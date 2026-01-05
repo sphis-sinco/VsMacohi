@@ -41,29 +41,27 @@ class Highscore
 		FlxG.save.flush();
 	}
 
+	static var diffs:Array<String> = ['-easy', '', '-hard'];
+
 	public static function formatSong(song:String, diff:Int):String
 	{
 		var daSong:String = song;
 
-		if (diff == 0)
-			daSong += '-easy';
-		else if (diff == 2)
-			daSong += '-hard';
+		daSong += (diffs[diff] ?? '');
 
 		return daSong;
 	}
 
 	public static function unformatSong(song:String):String
 	{
-		var daSong:String = '';
+		var daSong:String = song;
 
-		var i = 0;
-		for (stupid in song.split('-'))
-		{
-			if (i != song.split('-').length - 1)
-				daSong += stupid;
-			i++;
-		}
+		for (diff in diffs)
+			if (daSong.endsWith(diff))
+			{
+				daSong.replace(diff, '');
+				break;
+			}
 
 		trace(daSong);
 		return daSong;
