@@ -58,12 +58,12 @@ class Paths
 
 	inline static public function voices(song:String)
 	{
-		return music('songs/${song}_Voices');
+		return music('songs/${song.toLowerCase()}_Voices');
 	}
 
 	inline static public function inst(song:String)
 	{
-		return music('songs/${song}_Inst');
+		return music('songs/${song.toLowerCase()}_Inst');
 	}
 
 	inline static public function image(key:String)
