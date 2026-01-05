@@ -80,8 +80,6 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 		
-		FlxSprite.defaultAntialiasing = true;
-
 		global.WeekList.get;
 		global.SongList.get;
 		global.CharacterList.get;
