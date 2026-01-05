@@ -234,7 +234,7 @@ class ChartingState extends MusicBeatState
 
 		var stages:Array<String> = StageList.get;
 
-		var stageDropDown = new FlxUIDropDownMenu(10, 128, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
+		var stageDropDown = new FlxUIDropDownMenu(10, 128 + 32, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
 		{
 			_song.player2 = stages[Std.parseInt(stage)];
 		});
