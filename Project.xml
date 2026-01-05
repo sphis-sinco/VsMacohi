@@ -40,17 +40,15 @@
 
 	<classpath name="source" />
 
-	<assets path="assets/images" />
-	<assets path="assets/data" />
 	<assets path='example_mods' rename='mods' embed='false'/>
-	<!-- <template path='mods' /> -->
-	
-	<!-- <library name="noPreload" preload='false'/> -->
-	<!-- <library name="noPreload"/> -->
-	<assets path="assets/music" include="*.mp3" if="web"/>
-	<assets path="assets/music" include="*.ogg" unless="web"/>
-	<assets path="assets/sounds" include="*.mp3" if="web" />
-	<assets path="assets/sounds" include="*.ogg" unless="web" />
+
+	<assets path="assets/data" preload="true" />
+	<assets path="assets/images" preload="true" />
+
+	<assets path="assets/music" include="*.mp3" if="web" preload="true" />
+	<assets path="assets/music" include="*.ogg" unless="web" preload="true" />
+	<assets path="assets/sounds" include="*.mp3" if="web" preload="true" />
+	<assets path="assets/sounds" include="*.ogg" unless="web" preload="true" />
 
 	<assets path="CHANGELOG.md" rename='changelog.txt'/>
 
