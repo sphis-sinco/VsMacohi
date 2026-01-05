@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="boy-regular.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="BOY DOWN0000" x="4" y="4" width="373" height="466" frameX="-1" frameY="-15" frameWidth="378" frameHeight="481"/>
+	<SubTexture name="BOY DOWN0001" x="4" y="4" width="373" height="466" frameX="-1" frameY="-15" frameWidth="378" frameHeight="481"/>
+	<SubTexture name="BOY DOWN0002" x="385" y="4" width="378" height="468" frameX="0" frameY="0" frameWidth="378" frameHeight="481"/>
+	<SubTexture name="BOY DOWN0003" x="385" y="4" width="378" height="468" frameX="0" frameY="0" frameWidth="378" frameHeight="481"/>
+	<SubTexture name="BOY IDLE0000" x="771" y="4" width="540" height="504" frameX="0" frameY="-22" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0001" x="771" y="4" width="540" height="504" frameX="0" frameY="-22" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0002" x="1319" y="4" width="539" height="512" frameX="-1" frameY="-14" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0003" x="1866" y="4" width="540" height="512" frameX="-1" frameY="-14" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0004" x="2414" y="4" width="539" height="518" frameX="-2" frameY="-8" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0005" x="2414" y="4" width="539" height="518" frameX="-2" frameY="-8" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0006" x="2961" y="4" width="539" height="523" frameX="-3" frameY="-3" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0007" x="2961" y="4" width="539" height="523" frameX="-3" frameY="-3" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0008" x="3508" y="4" width="538" height="525" frameX="-4" frameY="-1" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0009" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0010" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0011" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0012" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0013" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY LEFT0000" x="550" y="537" width="448" height="515" frameX="0" frameY="-1" frameWidth="448" frameHeight="516"/>
+	<SubTexture name="BOY LEFT0001" x="550" y="537" width="448" height="515" frameX="0" frameY="-1" frameWidth="448" frameHeight="516"/>
+	<SubTexture name="BOY LEFT0002" x="1006" y="537" width="433" height="516" frameX="-15" frameY="0" frameWidth="448" frameHeight="516"/>
+	<SubTexture name="BOY LEFT0003" x="1006" y="537" width="433" height="516" frameX="-15" frameY="0" frameWidth="448" frameHeight="516"/>
+	<SubTexture name="BOY RIGHT0000" x="1447" y="537" width="333" height="530" frameX="-46" frameY="0" frameWidth="379" frameHeight="530"/>
+	<SubTexture name="BOY RIGHT0001" x="1447" y="537" width="333" height="530" frameX="-46" frameY="0" frameWidth="379" frameHeight="530"/>
+	<SubTexture name="BOY RIGHT0002" x="1788" y="537" width="377" height="529" frameX="0" frameY="-1" frameWidth="379" frameHeight="530"/>
+	<SubTexture name="BOY RIGHT0003" x="1788" y="537" width="377" height="529" frameX="0" frameY="-1" frameWidth="379" frameHeight="530"/>
+	<SubTexture name="BOY UP0000" x="2173" y="537" width="379" height="534" frameX="-32" frameY="0" frameWidth="411" frameHeight="534"/>
+	<SubTexture name="BOY UP0001" x="2173" y="537" width="379" height="534" frameX="-32" frameY="0" frameWidth="411" frameHeight="534"/>
+	<SubTexture name="BOY UP0002" x="2560" y="537" width="378" height="521" frameX="0" frameY="-13" frameWidth="411" frameHeight="534"/>
+	<SubTexture name="BOY UP0003" x="2560" y="537" width="378" height="521" frameX="0" frameY="-13" frameWidth="411" frameHeight="534"/>
+</TextureAtlas>
