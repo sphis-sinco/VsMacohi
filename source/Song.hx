@@ -63,4 +63,20 @@ class Song
 	}
 
 	public static var songChartVersion:Float = 1.0;
+	public static var defaultSongChart:SwagSong = {
+		song: 'Test',
+		
+		notes: [],
+		bpm: 150,
+		
+		needsVoices: true,
+		
+		player1: 'bf',
+		player2: 'dad',
+		
+		speed: 1,
+		validScore: false,
+
+		songChartVersion: songChartVersion
+	};
 }
