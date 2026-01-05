@@ -1,5 +1,6 @@
 package;
 
+import caching.ImageCacher;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
 import flixel.addons.transition.FlxTransitionableState;
@@ -24,9 +25,7 @@ class MusicBeatState extends FlxUIState
 		if (transIn != null)
 			trace('reg ' + transIn.region);
 
-		#if (!web)
-		TitleState.soundExt = '.ogg';
-		#end
+		ImageCacher.cacheUI();
 
 		super.create();
 	}

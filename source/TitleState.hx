@@ -1,5 +1,6 @@
 package;
 
+import caching.ImageCacher;
 import flixel.sound.FlxSound;
 import flixel.FlxG;
 import flixel.FlxSprite;

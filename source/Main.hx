@@ -1,5 +1,6 @@
 package;
 
+import caching.ImageCacher;
 import caching.AudioCacher;
 import flixel.FlxSprite;
 import flixel.FlxGame;
@@ -90,6 +91,7 @@ class Main extends Sprite
 		#end
 
 		AudioCacher.cacheSongs();
+		ImageCacher.cacheUI();
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
 
