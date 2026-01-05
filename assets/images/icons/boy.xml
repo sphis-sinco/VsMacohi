@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="boy.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="lose0000" x="4" y="4" width="240" height="240"/>
+	<SubTexture name="normal0000" x="252" y="4" width="240" height="240"/>
+</TextureAtlas>

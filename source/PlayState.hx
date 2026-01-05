@@ -1,5 +1,6 @@
 package;
 
+import HealthIcon.HealthIconAnims;
 import scripting.StageScript;
 import caching.AudioCacher;
 import menus.storymode.StoryMenuState;
@@ -584,6 +585,9 @@ class PlayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
+		if (health > 2)
+			health = 2;
+
 		scoreTxt.text = "Score:" + songScore;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
@@ -613,12 +617,13 @@ class PlayState extends MusicBeatState
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 
-		if (health > 2)
-			health = 2;
+		iconP1.playAnim((healthBar.percent < 20) ? LOSE : NORMAL);
+		iconP2.playAnim((healthBar.percent > 80) ? LOSE : NORMAL);
 
-		iconP1.animation.curAnim.curFrame = (healthBar.percent < 20) ? 1 : 0;
-
-		iconP2.animation.curAnim.curFrame = (healthBar.percent > 80) ? 1 : 0;
+		if (iconP1.animation.name == HealthIconAnims.LOSE)
+			iconP2.playAnim(WIN);
+		if (iconP2.animation.name == HealthIconAnims.LOSE)
+			iconP1.playAnim(WIN);
 
 		if (startingSong)
 		{
