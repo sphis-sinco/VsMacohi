@@ -229,7 +229,7 @@ class AnimationDebug extends FlxState
 		_file.addEventListener(Event.COMPLETE, onSaveComplete);
 		_file.addEventListener(Event.CANCEL, onSaveCancel);
 		_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
-		_file.save(Json.stringify(char.character_data, '\n'), daAnim + ".json");
+		_file.save(Json.stringify(char.character_data, '\t'), daAnim + ".json");
 	}
 
 	function onSaveComplete(_):Void
