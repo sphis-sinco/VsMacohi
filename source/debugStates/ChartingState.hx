@@ -185,9 +185,9 @@ class ChartingState extends MusicBeatState
 
 		player2DropDown.selectedLabel = _song.player2;
 
-		tab_group_characters.add(new FlxText(player1DropDown.x, player1DropDown.y - 16, 0, "Player 1", 8));
+		tab_group_characters.add(new FlxText(player1DropDown.x, player1DropDown.y - 16, 0, "Player", 8));
 		tab_group_characters.add(player1DropDown);
-		tab_group_characters.add(new FlxText(player2DropDown.x, player2DropDown.y - 16, 0, "Player 2", 8));
+		tab_group_characters.add(new FlxText(player2DropDown.x, player2DropDown.y - 16, 0, "Opponent", 8));
 		tab_group_characters.add(player2DropDown);
 
 		UI_box.addGroup(tab_group_characters);
