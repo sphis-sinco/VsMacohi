@@ -140,12 +140,10 @@ class Note extends FlxSprite
 
 		if (mustPress)
 		{
-			// The * 0.5 us so that its easier to hit them too late, instead of too early
-			if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset
-				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
-			{
+			var maxOffsetFromTargetPosition = 0.3;
+			if (strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * maxOffsetFromTargetPosition)
+				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * maxOffsetFromTargetPosition))
 				canBeHit = true;
-			}
 			else
 				canBeHit = false;
 
@@ -162,6 +160,6 @@ class Note extends FlxSprite
 
 		if (tooLate)
 			if (alpha > 0.3)
-				alpha -= 1 - ((strumTime - Conductor.songPosition) / 10);
+				alpha = 1 - ((strumTime - Conductor.songPosition) / 10);
 	}
 }
