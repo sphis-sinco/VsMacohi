@@ -18,13 +18,13 @@ class StageList
 
 		returnData = CoolUtil.splitTextfileIntoArray('stageList'.txt());
 		#if sys
-		var stages = FileSystem.readDirectory("assets/data/stages/");
+		var stages = FileSystem.readDirectory('assets/scripts/stages/');
 
 		if (_cache == stages)
 			return _cache;
 
 		for (stage in stages)
-			if (!FileSystem.isDirectory("assets/data/stages/" + stage))
+			if (!FileSystem.isDirectory('assets/scripts/stages/' + stage))
 				if (!returnData.contains(stage.replace('.hxc', '')))
 					returnData.push(stage.replace('.hxc', ''));
 		#end
