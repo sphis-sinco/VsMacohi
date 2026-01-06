@@ -1282,18 +1282,21 @@ class PlayState extends MusicBeatState
 
 			health += 0.023;
 
-			if (!boyfriend.animation.name.contains('miss'))
-				switch (note.noteData)
-				{
-					case 0:
+			switch (note.noteData)
+			{
+				case 0:
+					if (!(boyfriend.animation.name.contains('miss') && boyfriend.animation.name.contains('LEFT')))
 						boyfriend.playAnim('singLEFT');
-					case 1:
+				case 1:
+					if (!(boyfriend.animation.name.contains('miss') && boyfriend.animation.name.contains('DOWN')))
 						boyfriend.playAnim('singDOWN');
-					case 2:
+				case 2:
+					if (!(boyfriend.animation.name.contains('miss') && boyfriend.animation.name.contains('UP')))
 						boyfriend.playAnim('singUP');
-					case 3:
+				case 3:
+					if (!(boyfriend.animation.name.contains('miss') && boyfriend.animation.name.contains('RIGHT')))
 						boyfriend.playAnim('singRIGHT');
-				}
+			}
 
 			playerStrums.forEach(function(spr:FlxSprite)
 			{
