@@ -32,9 +32,14 @@ class Paths
 		return getPath('data/$key');
 	}
 
+	inline static public function scriptFile(key:String)
+	{
+		return getPath('scripts/$key');
+	}
+
 	inline static public function hxc(key:String)
 	{
-		return dataFile('$key.hxc');
+		return scriptFile('$key.hxc');
 	}
 
 	inline static public function txt(key:String)

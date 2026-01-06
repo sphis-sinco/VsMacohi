@@ -1,5 +1,6 @@
 package characters;
 
+import scripting.CharacterScript;
 import haxe.Json;
 
 using StringTools;
@@ -83,6 +84,8 @@ class Character extends CharacterBase
 
 	public var iconPath:String = 'none';
 
+	public var script:CharacterScript;
+
 	override function initChar(char:String)
 	{
 		super.initChar(char);
@@ -102,6 +105,9 @@ class Character extends CharacterBase
 			return;
 
 		trace('makin char: ' + char);
+
+		script = new CharacterScript(char);
+		script.set('this', this);
 
 		this.flipX = character_data?.flipX ?? false;
 		this.flipY = character_data?.flipY ?? false;

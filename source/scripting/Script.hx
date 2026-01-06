@@ -7,6 +7,9 @@ class Script extends Iris
 {
 	override public function new(path:String, scriptName:String)
 	{
+		if (!path.hxc().assetExists())
+			trace('Cannot find script: ' + path.hxc());
+
 		super((path.hxc().assetExists()) ? path.hxc().getTextContent() : '', {
 			name: scriptName
 		});

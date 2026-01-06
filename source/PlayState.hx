@@ -1,5 +1,6 @@
 package;
 
+import scripting.SongScript;
 import caching.CacheManager;
 import HealthIcon.HealthIconAnims;
 import scripting.StageScript;
@@ -109,6 +110,7 @@ class PlayState extends MusicBeatState
 	var inCutscene:Bool = false;
 
 	public var stageScript:StageScript;
+	public var songScript:SongScript;
 
 	public static var instance:PlayState;
 
@@ -141,25 +143,10 @@ class PlayState extends MusicBeatState
 		AudioCacher.cacheSong(SONG.song);
 
 		stageScript = new StageScript(SONG.stage);
-
-		callOnScripts('preCreate');
+		songScript = new SongScript(SONG.song);
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
-
-		switch (SONG.song.toLowerCase())
-		{
-			/*
-				case 'senpai':
-					dialogue = CoolUtil.coolTextFile('assets/data/senpai/senpaiDialogue.txt');
-				case 'roses':
-					dialogue = CoolUtil.coolTextFile('assets/data/roses/rosesDialogue.txt');
-				case 'thorns':
-					dialogue = CoolUtil.coolTextFile('assets/data/thorns/thornsDialogue.txt');
-			 */
-		}
-
-		makeStageBack();
 
 		var gfVersion:String = 'gf';
 
@@ -170,26 +157,15 @@ class PlayState extends MusicBeatState
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 
-		switch (SONG.player2)
+		if (SONG.player2 == gf.curCharacter)
 		{
-			case 'gf':
-				dad.setPosition(gf.x, gf.y);
-				gf.visible = false;
-				if (isStoryMode)
-				{
-					camPos.x += 600;
-					tweenCamIn();
-				}
-			case 'dad':
-				camPos.x += 400;
+			dad.setPosition(gf.x, gf.y);
+			gf.visible = false;
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
-		// REPOSITIONING PER STAGE
-		switch (curStage)
-		{
-		}
+		makeStageBack();
 
 		add(gf);
 
@@ -296,7 +272,9 @@ class PlayState extends MusicBeatState
 			startCountdown();
 
 		super.create();
+		
 		callOnScripts('postCreate');
+		cameraFollow(true);
 	}
 
 	function runDialogue(?dialogueBox:DialogueBox):Void
@@ -682,23 +660,7 @@ class PlayState extends MusicBeatState
 		}
 
 		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
-		{
-			if (camFollow.x != dad.getMidpoint().x + 150 && !PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
-			{
-				camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-
-				if (SONG.song.toLowerCase() == 'tutorial')
-					tweenCamIn();
-			}
-
-			if (PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && camFollow.x != boyfriend.getMidpoint().x - 100)
-			{
-				camFollow.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
-
-				if (SONG.song.toLowerCase() == 'tutorial')
-					FlxTween.tween(FlxG.camera, {zoom: 1}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut});
-			}
-		}
+			cameraFollow(!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection);
 
 		if (camZooming)
 		{
@@ -708,27 +670,6 @@ class PlayState extends MusicBeatState
 
 		FlxG.watch.addQuick("beatShit", curBeat);
 		FlxG.watch.addQuick("stepShit", curStep);
-
-		if (curSong == 'Fresh')
-			switch (curBeat)
-			{
-				case 16:
-					camZooming = true;
-					gfSpeed = 2;
-				case 48:
-					gfSpeed = 1;
-				case 80:
-					gfSpeed = 2;
-				case 112:
-					gfSpeed = 1;
-			}
-
-		if (curSong == 'Bopeebo')
-			switch (curBeat)
-			{
-				case 128, 129, 130:
-					vocals.volume = 0;
-			}
 
 		if (controls.RESET)
 		{
@@ -768,6 +709,17 @@ class PlayState extends MusicBeatState
 			keyShit();
 
 		callOnScripts('update', [elapsed]);
+	}
+
+	public function cameraFollow(followDad:Bool)
+	{
+		if (followDad)
+			camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
+
+		if (!followDad)
+			camFollow.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
+
+		callOnScripts('cameraFollow', [followDad]);
 	}
 
 	function noteUpdate()
@@ -1401,9 +1353,6 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.animation.name.startsWith("sing"))
 			boyfriend.playAnim('idle');
 
-		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
-			boyfriend.playAnim('hey', true);
-
 		callOnScripts('beatHit', [curBeat]);
 	}
 
@@ -1423,11 +1372,22 @@ class PlayState extends MusicBeatState
 
 		returnValues.set('stage', stageScript.call(method, params));
 
+		returnValues.set('boyfriend', boyfriend?.script?.call(method, params) ?? null);
+		returnValues.set('gf', gf?.script?.call(method, params) ?? null);
+		returnValues.set('dad', dad?.script?.call(method, params) ?? null);
+
+		returnValues.set('song', songScript.call(method, params));
+
 		return returnValues;
 	}
 
 	public function setOnScripts(vari:String, value:Dynamic)
 	{
 		stageScript.set(vari, value);
+
+		for (char in [boyfriend, gf, dad])
+			char.script.set(vari, value);
+
+		songScript.set(vari, value);
 	}
 }

@@ -1,0 +1,7 @@
+function cameraFollow(followDad:Bool)
+{
+    if (!followDad)
+	    FlxTween.tween(FlxG.camera, {zoom: 1}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut});
+    else
+		PlayState.instance.tweenCamIn();
+}

@@ -1,0 +1,6 @@
+function makeStageFront()
+{
+    if (this == PlayState.instance.dad && PlayState.isStoryMode)
+        PlayState.instance.camPos.x += 600;
+        PlayState.instance.tweenCamIn();
+}

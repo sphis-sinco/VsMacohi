@@ -1,0 +1,5 @@
+function makeStageFront()
+{
+	if (PlayState.dad == this)
+        PlayState.instance.camPos.x += 400;
+}

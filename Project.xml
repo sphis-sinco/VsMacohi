@@ -46,6 +46,7 @@
 
 	<assets path="assets/data" library="default" />
 	<assets path="assets/images" library="default" />
+	<assets path="assets/scripts" library="default" />
 
 	<assets path="assets/music" include="*.mp3" if="web" library="default" />
 	<assets path="assets/music" include="*.ogg" unless="web" library="default" />
