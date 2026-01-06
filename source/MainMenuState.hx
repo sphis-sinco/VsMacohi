@@ -35,7 +35,7 @@ class MainMenuState extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		if (!FlxG.sound.music.playing)
+		if (!FlxG.sound?.music?.playing)
 		{
 			FlxG.sound.playMusic('freakyMenu'.music());
 		}
@@ -86,7 +86,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "v" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "vs Macohi " + Application.current.meta.get('version') + ' (Funkin 0.2.7.1)', 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat('vcr.ttf'.font(), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
