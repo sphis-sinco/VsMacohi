@@ -137,7 +137,7 @@ class PlayState extends MusicBeatState
 		if (SONG == null)
 			SONG = Song.loadFromJson('tutorial', 'tutorial');
 
-		Song.convertChart(SONG, (Highscore.formatSong(SONG.song, storyDifficulty)).songJson());
+		Song.convertChart(SONG);
 		AudioCacher.cacheSong(SONG.song);
 
 		stageScript = new StageScript(SONG.stage);

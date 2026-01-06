@@ -52,6 +52,11 @@ class Paths
 		return dataFile('$key.json');
 	}
 
+	inline static public function songJson(key:String, ?folder:String)
+	{
+		return json('songs/${folder ?? key}/$key');
+	}
+
 	static public function sound(key:String)
 	{
 		return getPath('sounds/$key.$SOUND_EXT');

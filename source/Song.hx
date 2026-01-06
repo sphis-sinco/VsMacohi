@@ -24,7 +24,7 @@ typedef SwagSong =
 	var player2:String;
 	var validScore:Bool;
 
-	var songChartVersion:Float;
+	var songChartVersion:Null<Float>;
 }
 
 class Song
@@ -60,12 +60,7 @@ class Song
 	public static function parseJSONshit(rawJson:String, ?path:String):SwagSong
 	{
 		var rawJsonJson = Json.parse(rawJson);
-		var swagShit:SwagSong;
-
-		if (Reflect.hasField(rawJsonJson, 'bpm'))
-			swagShit = cast(rawJsonJson);
-		else
-			swagShit = cast(rawJsonJson).song;
+		var swagShit:SwagSong = cast(rawJsonJson).song;
 		swagShit.validScore = true;
 
 		convertChart(swagShit, path);
