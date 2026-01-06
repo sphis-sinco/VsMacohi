@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
@@ -49,7 +50,7 @@ class Note extends FlxSprite
 		var daStage:String = PlayState.curStage;
 
 		frames = 'NOTE_assets'.getSparrowAtlas();
-		
+
 		animation.addByPrefix('greenScroll', 'green0');
 		animation.addByPrefix('redScroll', 'red0');
 		animation.addByPrefix('blueScroll', 'blue0');
@@ -137,29 +138,32 @@ class Note extends FlxSprite
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		if (mustPress)
+		
+		if (Std.isOfType(FlxG.state, PlayState))
 		{
-			var maxOffsetFromTargetPosition = 0.5;
-			if (strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * maxOffsetFromTargetPosition)
-				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * maxOffsetFromTargetPosition))
-				canBeHit = true;
+			if (mustPress)
+			{
+				var maxOffsetFromTargetPosition = 0.5;
+				if (strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * maxOffsetFromTargetPosition)
+					&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * maxOffsetFromTargetPosition))
+					canBeHit = true;
+				else
+					canBeHit = false;
+
+				if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset)
+					tooLate = true;
+			}
 			else
+			{
 				canBeHit = false;
 
-			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset)
-				tooLate = true;
-		}
-		else
-		{
-			canBeHit = false;
+				if (strumTime <= Conductor.songPosition)
+					wasGoodHit = true;
+			}
 
-			if (strumTime <= Conductor.songPosition)
-				wasGoodHit = true;
+			if (tooLate)
+				if (alpha > 0.3)
+					alpha = 1 - ((strumTime - Conductor.songPosition) / 10);
 		}
-
-		if (tooLate)
-			if (alpha > 0.3)
-				alpha = 1 - ((strumTime - Conductor.songPosition) / 10);
 	}
 }
