@@ -165,6 +165,8 @@ class Character extends CharacterBase
 
 	override function dance()
 	{
+		if (debugMode) return;
+
 		if (getTag('dance_idle') != null)
 		{
 			var tag_dont_diasw:String = getTag('dont_dance_if_animation_startsWith')?.value ?? null;
