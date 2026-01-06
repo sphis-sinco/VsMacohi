@@ -50,12 +50,15 @@ class Script extends Iris
 				else
 				{
 					#if sys
-					if (FileSystem.isDirectory(dir + '/' + content))
+					if (FileSystem.isDirectory(dir + '/' + content)
+						&& (!['characters', 'songs', 'stages'].contains(content) && dir == 'assets/scripts'))
 						readDir(dir + '/' + content);
 					#end
 				}
 			}
 		}
+
+		readDir('assets/scripts');
 	}
 
 	public static function callOnMiscScripts(method:String, ?params:Array<Dynamic>):Map<String, Dynamic>
