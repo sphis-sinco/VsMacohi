@@ -732,7 +732,6 @@ class ChartingState extends MusicBeatState
 	function changeSection(sec:Int = 0, ?updateMusic:Bool = true):Void
 	{
 		trace('changing section' + sec);
-		updateSideTexts();
 
 		if (_song.notes[sec] != null)
 		{
@@ -761,6 +760,7 @@ class ChartingState extends MusicBeatState
 			updateGrid();
 			updateSectionUI();
 		}
+		updateSideTexts();
 	}
 
 	function copySection(?sectionNum:Int = 1)
