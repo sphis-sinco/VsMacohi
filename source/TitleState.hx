@@ -53,7 +53,7 @@ class TitleState extends MusicBeatState
 		global.StageList.get;
 
 		// AudioCacher.cacheSongs();
-		ImageCacher.cacheUI();
+		// ImageCacher.cacheUI();
 		
 		PlayerSettings.init();
 
