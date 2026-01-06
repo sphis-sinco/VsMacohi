@@ -1,0 +1,110 @@
+{
+	"song": {
+		"bpm": 140,
+		"needsVoices": true,
+		"notes": [
+			{
+				"altAnim": false,
+				"bpm": 150,
+				"changeBPM": false,
+				"lengthInSteps": 16,
+				"mustHitSection": true,
+				"sectionNotes": [],
+				"typeOfSection": 0
+			},
+			{
+				"altAnim": false,
+				"bpm": 140,
+				"changeBPM": false,
+				"lengthInSteps": 16,
+				"mustHitSection": true,
+				"sectionNotes": [],
+				"typeOfSection": 0
+			},
+			{
+				"altAnim": false,
+				"bpm": 140,
+				"changeBPM": false,
+				"lengthInSteps": 16,
+				"mustHitSection": true,
+				"sectionNotes": [],
+				"typeOfSection": 0
+			},
+			{
+				"altAnim": false,
+				"bpm": 140,
+				"changeBPM": false,
+				"lengthInSteps": 16,
+				"mustHitSection": true,
+				"sectionNotes": [],
+				"typeOfSection": 0
+			},
+			{
+				"altAnim": false,
+				"bpm": 140,
+				"changeBPM": false,
+				"lengthInSteps": 16,
+				"mustHitSection": true,
+				"sectionNotes": [
+					[
+						6857.14285714286,
+						6,
+						0
+					],
+					[
+						7285.71428571429,
+						5,
+						0
+					],
+					[
+						7607.14285714286,
+						7,
+						0
+					],
+					[
+						7644.64285714286,
+						5,
+						0
+					],
+					[
+						7706.25,
+						4,
+						0
+					],
+					[
+						7735.71428571429,
+						6,
+						0
+					],
+					[
+						7928.57142857143,
+						7,
+						0
+					],
+					[
+						8035.71428571429,
+						5,
+						0
+					]
+				],
+				"typeOfSection": 0
+			},
+			{
+				"altAnim": false,
+				"bpm": 140,
+				"changeBPM": false,
+				"lengthInSteps": 16,
+				"mustHitSection": true,
+				"sectionNotes": [],
+				"typeOfSection": 0
+			}
+		],
+		"player1": "boy",
+		"player2": "macohi",
+		"song": "melo tick",
+		"songChartVersion": 1.1,
+		"speed": 2,
+		"stage": "stage",
+		"validScore": false
+	}
+}
