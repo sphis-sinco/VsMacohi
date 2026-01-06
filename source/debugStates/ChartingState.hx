@@ -494,6 +494,11 @@ class ChartingState extends MusicBeatState
 		_song.song = typingShit.text;
 
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
+		for (note in curRenderedNotes)
+		{
+			note.mustPress = Math.abs(note.x - strumLine.y) < 30 || strumLine.y > note.y;
+			note.color = note.mustPress ? 0xFFFFFF : 0xBCBCBC;
+		}
 
 		if (curBeat % 4 == 0 && curStep >= 16 * (curSection + 1))
 		{
