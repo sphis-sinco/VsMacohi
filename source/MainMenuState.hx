@@ -80,7 +80,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
-			menuItem.scrollFactor.set();
+			// menuItem.scrollFactor.set();
 			menuItem.antialiasing = true;
 		}
 
@@ -93,7 +93,7 @@ class MainMenuState extends MusicBeatState
 
 		// NG.core.calls.event.logEvent('swag').send();
 
-		changeItem();
+		changeItem(0);
 
 		super.create();
 	}
@@ -186,6 +186,8 @@ class MainMenuState extends MusicBeatState
 		menuItems.forEach(function(spr:FlxSprite)
 		{
 			spr.screenCenter(X);
+			if (spr.ID == curSelected)
+				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
 		});
 	}
 
@@ -203,10 +205,7 @@ class MainMenuState extends MusicBeatState
 			spr.animation.play('idle');
 
 			if (spr.ID == curSelected)
-			{
 				spr.animation.play('selected');
-				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.y);
-			}
 
 			spr.updateHitbox();
 		});
