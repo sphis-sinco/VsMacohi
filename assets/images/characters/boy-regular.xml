@@ -6,30 +6,46 @@
 	<SubTexture name="BOY DOWN0001" x="4" y="4" width="373" height="466" frameX="-1" frameY="-15" frameWidth="378" frameHeight="481"/>
 	<SubTexture name="BOY DOWN0002" x="385" y="4" width="378" height="468" frameX="0" frameY="0" frameWidth="378" frameHeight="481"/>
 	<SubTexture name="BOY DOWN0003" x="385" y="4" width="378" height="468" frameX="0" frameY="0" frameWidth="378" frameHeight="481"/>
-	<SubTexture name="BOY IDLE0000" x="771" y="4" width="540" height="504" frameX="0" frameY="-22" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0001" x="771" y="4" width="540" height="504" frameX="0" frameY="-22" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0002" x="1319" y="4" width="539" height="512" frameX="-1" frameY="-14" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0003" x="1866" y="4" width="540" height="512" frameX="-1" frameY="-14" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0004" x="2414" y="4" width="539" height="518" frameX="-2" frameY="-8" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0005" x="2414" y="4" width="539" height="518" frameX="-2" frameY="-8" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0006" x="2961" y="4" width="539" height="523" frameX="-3" frameY="-3" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0007" x="2961" y="4" width="539" height="523" frameX="-3" frameY="-3" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0008" x="3508" y="4" width="538" height="525" frameX="-4" frameY="-1" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0009" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0010" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0011" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0012" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY IDLE0013" x="4" y="537" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
-	<SubTexture name="BOY LEFT0000" x="550" y="537" width="448" height="515" frameX="0" frameY="-1" frameWidth="448" frameHeight="516"/>
-	<SubTexture name="BOY LEFT0001" x="550" y="537" width="448" height="515" frameX="0" frameY="-1" frameWidth="448" frameHeight="516"/>
-	<SubTexture name="BOY LEFT0002" x="1006" y="537" width="433" height="516" frameX="-15" frameY="0" frameWidth="448" frameHeight="516"/>
-	<SubTexture name="BOY LEFT0003" x="1006" y="537" width="433" height="516" frameX="-15" frameY="0" frameWidth="448" frameHeight="516"/>
-	<SubTexture name="BOY RIGHT0000" x="1447" y="537" width="333" height="530" frameX="-46" frameY="0" frameWidth="379" frameHeight="530"/>
-	<SubTexture name="BOY RIGHT0001" x="1447" y="537" width="333" height="530" frameX="-46" frameY="0" frameWidth="379" frameHeight="530"/>
-	<SubTexture name="BOY RIGHT0002" x="1788" y="537" width="377" height="529" frameX="0" frameY="-1" frameWidth="379" frameHeight="530"/>
-	<SubTexture name="BOY RIGHT0003" x="1788" y="537" width="377" height="529" frameX="0" frameY="-1" frameWidth="379" frameHeight="530"/>
-	<SubTexture name="BOY UP0000" x="2173" y="537" width="379" height="534" frameX="-32" frameY="0" frameWidth="411" frameHeight="534"/>
-	<SubTexture name="BOY UP0001" x="2173" y="537" width="379" height="534" frameX="-32" frameY="0" frameWidth="411" frameHeight="534"/>
-	<SubTexture name="BOY UP0002" x="2560" y="537" width="378" height="521" frameX="0" frameY="-13" frameWidth="411" frameHeight="534"/>
-	<SubTexture name="BOY UP0003" x="2560" y="537" width="378" height="521" frameX="0" frameY="-13" frameWidth="411" frameHeight="534"/>
+	<SubTexture name="BOY DOWN MISS0000" x="771" y="4" width="376" height="470" frameX="-1" frameY="-15" frameWidth="382" frameHeight="485"/>
+	<SubTexture name="BOY DOWN MISS0001" x="771" y="4" width="376" height="470" frameX="-1" frameY="-15" frameWidth="382" frameHeight="485"/>
+	<SubTexture name="BOY DOWN MISS0002" x="1155" y="4" width="382" height="472" frameX="0" frameY="0" frameWidth="382" frameHeight="485"/>
+	<SubTexture name="BOY DOWN MISS0003" x="1155" y="4" width="382" height="472" frameX="0" frameY="0" frameWidth="382" frameHeight="485"/>
+	<SubTexture name="BOY IDLE0000" x="1545" y="4" width="540" height="504" frameX="0" frameY="-22" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0001" x="1545" y="4" width="540" height="504" frameX="0" frameY="-22" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0002" x="2093" y="4" width="539" height="512" frameX="-1" frameY="-14" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0003" x="2640" y="4" width="540" height="512" frameX="-1" frameY="-14" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0004" x="3188" y="4" width="539" height="518" frameX="-2" frameY="-8" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0005" x="3188" y="4" width="539" height="518" frameX="-2" frameY="-8" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0006" x="4" y="530" width="539" height="523" frameX="-3" frameY="-3" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0007" x="4" y="530" width="539" height="523" frameX="-3" frameY="-3" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0008" x="551" y="530" width="538" height="525" frameX="-4" frameY="-1" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0009" x="1097" y="530" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0010" x="1097" y="530" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0011" x="1097" y="530" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0012" x="1097" y="530" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY IDLE0013" x="1097" y="530" width="538" height="526" frameX="-4" frameY="0" frameWidth="542" frameHeight="526"/>
+	<SubTexture name="BOY LEFT0000" x="1643" y="530" width="448" height="515" frameX="0" frameY="-1" frameWidth="448" frameHeight="516"/>
+	<SubTexture name="BOY LEFT0001" x="1643" y="530" width="448" height="515" frameX="0" frameY="-1" frameWidth="448" frameHeight="516"/>
+	<SubTexture name="BOY LEFT0002" x="2099" y="530" width="433" height="516" frameX="-15" frameY="0" frameWidth="448" frameHeight="516"/>
+	<SubTexture name="BOY LEFT0003" x="2099" y="530" width="433" height="516" frameX="-15" frameY="0" frameWidth="448" frameHeight="516"/>
+	<SubTexture name="BOY LEFT MISS0000" x="2540" y="530" width="452" height="520" frameX="0" frameY="-1" frameWidth="452" frameHeight="521"/>
+	<SubTexture name="BOY LEFT MISS0001" x="2540" y="530" width="452" height="520" frameX="0" frameY="-1" frameWidth="452" frameHeight="521"/>
+	<SubTexture name="BOY LEFT MISS0002" x="3000" y="530" width="437" height="521" frameX="-15" frameY="0" frameWidth="452" frameHeight="521"/>
+	<SubTexture name="BOY LEFT MISS0003" x="3000" y="530" width="437" height="521" frameX="-15" frameY="0" frameWidth="452" frameHeight="521"/>
+	<SubTexture name="BOY RIGHT0000" x="3445" y="530" width="333" height="530" frameX="-46" frameY="0" frameWidth="379" frameHeight="530"/>
+	<SubTexture name="BOY RIGHT0001" x="3445" y="530" width="333" height="530" frameX="-46" frameY="0" frameWidth="379" frameHeight="530"/>
+	<SubTexture name="BOY RIGHT0002" x="4" y="1068" width="377" height="529" frameX="0" frameY="-1" frameWidth="379" frameHeight="530"/>
+	<SubTexture name="BOY RIGHT0003" x="4" y="1068" width="377" height="529" frameX="0" frameY="-1" frameWidth="379" frameHeight="530"/>
+	<SubTexture name="BOY RIGHT MISS0000" x="389" y="1068" width="337" height="535" frameX="-46" frameY="0" frameWidth="383" frameHeight="535"/>
+	<SubTexture name="BOY RIGHT MISS0001" x="389" y="1068" width="337" height="535" frameX="-46" frameY="0" frameWidth="383" frameHeight="535"/>
+	<SubTexture name="BOY RIGHT MISS0002" x="734" y="1068" width="381" height="534" frameX="0" frameY="-1" frameWidth="383" frameHeight="535"/>
+	<SubTexture name="BOY RIGHT MISS0003" x="734" y="1068" width="381" height="534" frameX="0" frameY="-1" frameWidth="383" frameHeight="535"/>
+	<SubTexture name="BOY UP0000" x="1123" y="1068" width="379" height="534" frameX="-32" frameY="0" frameWidth="411" frameHeight="534"/>
+	<SubTexture name="BOY UP0001" x="1123" y="1068" width="379" height="534" frameX="-32" frameY="0" frameWidth="411" frameHeight="534"/>
+	<SubTexture name="BOY UP0002" x="1510" y="1068" width="378" height="521" frameX="0" frameY="-13" frameWidth="411" frameHeight="534"/>
+	<SubTexture name="BOY UP0003" x="1510" y="1068" width="378" height="521" frameX="0" frameY="-13" frameWidth="411" frameHeight="534"/>
+	<SubTexture name="BOY UP MISS0000" x="1896" y="1068" width="382" height="538" frameX="-32" frameY="0" frameWidth="414" frameHeight="538"/>
+	<SubTexture name="BOY UP MISS0001" x="1896" y="1068" width="382" height="538" frameX="-32" frameY="0" frameWidth="414" frameHeight="538"/>
+	<SubTexture name="BOY UP MISS0002" x="2286" y="1068" width="382" height="525" frameX="0" frameY="-13" frameWidth="414" frameHeight="538"/>
+	<SubTexture name="BOY UP MISS0003" x="2286" y="1068" width="382" height="525" frameX="0" frameY="-13" frameWidth="414" frameHeight="538"/>
 </TextureAtlas>

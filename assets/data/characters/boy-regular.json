@@ -26,7 +26,7 @@
 		},
 		{
 			"flipX": false,
-			"prefix": "BOY LEFT",
+			"prefix": "BOY LEFT0",
 			"name": "singLEFT",
 			"offsets": [
 				-94,
@@ -39,7 +39,7 @@
 		},
 		{
 			"flipX": false,
-			"prefix": "BOY DOWN",
+			"prefix": "BOY DOWN0",
 			"name": "singDOWN",
 			"offsets": [
 				-150,
@@ -52,7 +52,7 @@
 		},
 		{
 			"flipX": false,
-			"prefix": "BOY UP",
+			"prefix": "BOY UP0",
 			"name": "singUP",
 			"offsets": [
 				-170,
@@ -65,8 +65,62 @@
 		},
 		{
 			"flipX": false,
-			"prefix": "BOY RIGHT",
+			"prefix": "BOY RIGHT0",
 			"name": "singRIGHT",
+			"offsets": [
+				-164,
+				4
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		}
+
+		,
+		{
+			"flipX": false,
+			"prefix": "BOY LEFT MISS0",
+			"name": "singLEFTmiss",
+			"offsets": [
+				-94,
+				-10
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BOY DOWN MISS0",
+			"name": "singDOWNmiss",
+			"offsets": [
+				-150,
+				-60
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BOY UP MISS0",
+			"name": "singUPmiss",
+			"offsets": [
+				-170,
+				32
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BOY RIGHT MISS0",
+			"name": "singRIGHTmiss",
 			"offsets": [
 				-164,
 				4
