@@ -154,7 +154,6 @@ class ChartingState extends MusicBeatState
 		add(curRenderedNotes);
 		add(curRenderedSustains);
 
-
 		add(leftSide);
 		add(rightSide);
 		updateSideTexts();
@@ -496,8 +495,21 @@ class ChartingState extends MusicBeatState
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
 		for (note in curRenderedNotes)
 		{
-			note.mustPress = Math.abs(note.x - strumLine.y) < 30 || strumLine.y > note.y;
-			note.color = note.mustPress ? 0xFFFFFF : 0xBCBCBC;
+			var noteNStrumlineYDiff = Math.abs(note.y - strumLine.y);
+
+			note.mustPress = noteNStrumlineYDiff < 30 || strumLine.y > note.y;
+			var colorThingy = Std.int(255 - noteNStrumlineYDiff);
+
+			if (note.mustPress)
+				note.color = FlxColor.fromRGB(255, 255, 255);
+			else
+				note.color = FlxColor.fromRGB(colorThingy, colorThingy, colorThingy);
+
+			if (FlxG.sound.music.playing)
+			{
+				if (noteNStrumlineYDiff == 0)
+					FlxG.sound.play('hitsound'.sound());
+			}
 		}
 
 		if (curBeat % 4 == 0 && curStep >= 16 * (curSection + 1))
@@ -798,8 +810,8 @@ class ChartingState extends MusicBeatState
 		updateSideTexts();
 	}
 
-	var leftSide:FlxText = new FlxText(0,0,0,'',16);
-	var rightSide:FlxText = new FlxText(0,0,0,'',16);
+	var leftSide:FlxText = new FlxText(0, 0, 0, '', 16);
+	var rightSide:FlxText = new FlxText(0, 0, 0, '', 16);
 
 	function updateSideTexts():Void
 	{
