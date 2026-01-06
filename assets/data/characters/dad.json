@@ -1,6 +1,12 @@
 {
 	"flipX": false,
 	"notes": [],
+	"tags": [
+		{
+			"name": "dad_var",
+			"value": 6.1
+		}
+	],
 	"atlasPath": "DADDY_DEAREST",
 	"flipY": false,
 	"iconPath": "dad",

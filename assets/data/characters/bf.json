@@ -5,6 +5,10 @@
 		{
 			"name": "as_player_flip_sideways_singing_directions",
 			"value": false
+		},
+		{
+			"name": "disable_op_dance_timer",
+			"value": true
 		}
 	],
 	"atlasPath": "BOYFRIEND",

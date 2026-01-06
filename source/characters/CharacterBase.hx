@@ -36,24 +36,15 @@ class CharacterBase extends FlxSprite
 	{
 	}
 
+	public var curAnim(get, never):String;
+
+	function get_curAnim():String
+	{
+		return animation.name;
+	}
+
 	override function update(elapsed:Float)
 	{
-		if (!curCharacter.startsWith('bf'))
-		{
-			if (animation?.name.startsWith('sing') ?? false)
-				holdTimer += elapsed;
-
-			var dadVar:Float = 4;
-
-			if (curCharacter == 'dad')
-				dadVar = 6.1;
-			if (holdTimer >= Conductor.stepCrochet * dadVar * 0.001)
-			{
-				dance();
-				holdTimer = 0;
-			}
-		}
-
 		super.update(elapsed);
 	}
 

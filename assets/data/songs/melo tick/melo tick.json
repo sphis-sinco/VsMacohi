@@ -1,47 +1,45 @@
 {
 	"song": {
-		"bpm": 140,
 		"needsVoices": true,
 		"notes": [
 			{
 				"altAnim": false,
-				"bpm": 150,
 				"changeBPM": false,
 				"lengthInSteps": 16,
 				"mustHitSection": true,
 				"sectionNotes": [],
-				"typeOfSection": 0
+				"typeOfSection": 0,
+				"bpm": 150
 			},
 			{
 				"altAnim": false,
-				"bpm": 140,
 				"changeBPM": false,
 				"lengthInSteps": 16,
 				"mustHitSection": true,
 				"sectionNotes": [],
-				"typeOfSection": 0
+				"typeOfSection": 0,
+				"bpm": 140
 			},
 			{
 				"altAnim": false,
-				"bpm": 140,
 				"changeBPM": false,
 				"lengthInSteps": 16,
 				"mustHitSection": true,
 				"sectionNotes": [],
-				"typeOfSection": 0
+				"typeOfSection": 0,
+				"bpm": 140
 			},
 			{
 				"altAnim": false,
-				"bpm": 140,
 				"changeBPM": false,
 				"lengthInSteps": 16,
 				"mustHitSection": true,
 				"sectionNotes": [],
-				"typeOfSection": 0
+				"typeOfSection": 0,
+				"bpm": 140
 			},
 			{
 				"altAnim": false,
-				"bpm": 140,
 				"changeBPM": false,
 				"lengthInSteps": 16,
 				"mustHitSection": true,
@@ -72,22 +70,93 @@
 						0
 					],
 					[
-						7735.71428571429,
+						7821.42857142857,
 						6,
 						0
 					],
 					[
 						7928.57142857143,
+						5,
+						0
+					],
+					[
+						8142.85714285714,
+						7,
+						0
+					]
+				],
+				"typeOfSection": 0,
+				"bpm": 140
+			},
+			{
+				"altAnim": false,
+				"changeBPM": false,
+				"lengthInSteps": 16,
+				"mustHitSection": true,
+				"sectionNotes": [
+					[
+						8571.42857142857,
+						5,
+						0
+					],
+					[
+						8785.71428571428,
+						4,
+						0
+					],
+					[
+						9000,
+						6,
+						0
+					],
+					[
+						9000,
 						7,
 						0
 					],
 					[
-						8035.71428571429,
+						9214.28571428571,
+						4,
+						0
+					],
+					[
+						9214.28571428571,
+						5,
+						0
+					],
+					[
+						9428.57142857143,
+						5,
+						0
+					],
+					[
+						9428.57142857143,
+						6,
+						0
+					],
+					[
+						9642.85714285714,
+						4,
+						0
+					],
+					[
+						9642.85714285714,
+						5,
+						0
+					],
+					[
+						9750,
+						6,
+						0
+					],
+					[
+						9964.28571428571,
 						5,
 						0
 					]
 				],
-				"typeOfSection": 0
+				"typeOfSection": 0,
+				"bpm": 140
 			},
 			{
 				"altAnim": false,
@@ -101,10 +170,11 @@
 		],
 		"player1": "boy",
 		"player2": "macohi",
-		"song": "melo tick",
-		"songChartVersion": 1.1,
-		"speed": 2,
+		"song": "Melo Tick",
 		"stage": "stage",
-		"validScore": false
+		"validScore": true,
+		"bpm": 140,
+		"songChartVersion": 1.1,
+		"speed": 2
 	}
 }

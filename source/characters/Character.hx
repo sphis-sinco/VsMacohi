@@ -151,21 +151,40 @@ class Character extends CharacterBase
 		animation.play('idle');
 	}
 
-	public var curAnim(get, never):String;
-
-	function get_curAnim():String
-	{
-		return animation.name;
-	}
-
 	public function getTag(tag:String):CharacterTag
 	{
 		return CharacterTagManager.getTag(character_data.tags, tag);
 	}
 
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (!(getTag('disable_op_dance_timer')?.value ?? false))
+		{
+			try
+			{
+				if (curAnim.startsWith('sing') ?? false)
+					holdTimer += elapsed;
+			}
+			catch (e)
+			{
+			}
+
+			var dadVar:Float = getTag('dad_var')?.value ?? 4;
+
+			if (holdTimer >= Conductor.stepCrochet * dadVar * 0.001)
+			{
+				dance();
+				holdTimer = 0;
+			}
+		}
+	}
+
 	override function dance()
 	{
-		if (debugMode) return;
+		if (debugMode)
+			return;
 
 		if (getTag('dance_idle') != null)
 		{
