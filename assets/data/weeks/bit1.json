@@ -1,0 +1,34 @@
+{
+        "weekTitle": "For her love",
+        "songs": [
+                "bopeebo",
+                "fresh",
+                "dadbattle"
+        ],
+        "props": [
+                {
+                        "charID": "dad",
+                        "charPosID": 0,
+                        "offsets": [
+                                150,
+                                200
+                        ]
+                },
+                {
+                        "charID": "bf",
+                        "charPosID": 1,
+                        "offsets": [
+                                0,
+                                15
+                        ]
+                },
+                {
+                        "charID": "gf",
+                        "charPosID": 2,
+                        "offsets": [
+                                150,
+                                150
+                        ]
+                }
+        ]
+}
