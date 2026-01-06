@@ -829,7 +829,7 @@ class PlayState extends MusicBeatState
 						if (daNote.tooLate || !daNote.wasGoodHit)
 						{
 							health -= 0.0475;
-							vocals.volume = 0;
+							// vocals.volume = 0;
 						}
 
 						daNote.active = false;
@@ -1216,8 +1216,6 @@ class PlayState extends MusicBeatState
 
 			songScore -= 10;
 
-			FlxG.sound.play('missnote'.soundRandom(1, 3), FlxG.random.float(0.1, 0.2));
-
 			boyfriend.stunned = true;
 
 			// get stunned for 5 seconds
@@ -1238,6 +1236,7 @@ class PlayState extends MusicBeatState
 					boyfriend.playAnim('singRIGHTmiss', true);
 			}
 
+			FlxG.sound.play('missnote'.soundRandom(1, 3), FlxG.random.float(0.1, 0.2));
 			callOnScripts('noteMiss', [direction]);
 		}
 	}
@@ -1289,13 +1288,13 @@ class PlayState extends MusicBeatState
 			switch (note.noteData)
 			{
 				case 0:
-					boyfriend.playAnim('singLEFT', true);
+					boyfriend.playAnim('singLEFT');
 				case 1:
-					boyfriend.playAnim('singDOWN', true);
+					boyfriend.playAnim('singDOWN');
 				case 2:
-					boyfriend.playAnim('singUP', true);
+					boyfriend.playAnim('singUP');
 				case 3:
-					boyfriend.playAnim('singRIGHT', true);
+					boyfriend.playAnim('singRIGHT');
 			}
 
 			playerStrums.forEach(function(spr:FlxSprite)
