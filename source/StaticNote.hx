@@ -48,4 +48,6 @@ class StaticNote extends FlxSprite
 
 		animation.play('static');
 	}
+
+	public var confirmTick:Int = 0;
 }

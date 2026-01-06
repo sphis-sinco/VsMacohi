@@ -75,8 +75,8 @@ class PlayState extends MusicBeatState
 
 	private static var prevCamFollow:FlxObject;
 
-	private var strumLineNotes:FlxTypedGroup<FlxSprite>;
-	private var playerStrums:FlxTypedGroup<FlxSprite>;
+	private var strumLineNotes:FlxTypedGroup<StaticNote>;
+	private var playerStrums:FlxTypedGroup<StaticNote>;
 
 	private var camZooming:Bool = false;
 	private var curSong:String = "";
@@ -207,10 +207,10 @@ class PlayState extends MusicBeatState
 		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
 		strumLine.scrollFactor.set();
 
-		strumLineNotes = new FlxTypedGroup<FlxSprite>();
+		strumLineNotes = new FlxTypedGroup<StaticNote>();
 		add(strumLineNotes);
 
-		playerStrums = new FlxTypedGroup<FlxSprite>();
+		playerStrums = new FlxTypedGroup<StaticNote>();
 
 		// startCountdown();
 
@@ -762,6 +762,16 @@ class PlayState extends MusicBeatState
 				unspawnNotes.splice(index, 1);
 			}
 
+		noteUpdate();
+
+		if (!inCutscene)
+			keyShit();
+
+		callOnScripts('update', [elapsed]);
+	}
+
+	function noteUpdate()
+	{
 		if (generatedMusic)
 		{
 			notes.forEachAlive(function(daNote:Note)
@@ -811,6 +821,12 @@ class PlayState extends MusicBeatState
 					if (SONG.needsVoices)
 						vocals.volume = 1;
 
+					strumLineNotes.forEach(function(spr:StaticNote)
+					{
+						if (Math.abs(daNote.noteData) == spr.ID && !playerStrums.members.contains(spr))
+							spr.animation.play('confirm', true);
+					});
+
 					daNote.kill();
 					notes.remove(daNote, true);
 					daNote.destroy();
@@ -842,11 +858,6 @@ class PlayState extends MusicBeatState
 				}
 			});
 		}
-
-		if (!inCutscene)
-			keyShit();
-
-		callOnScripts('update', [elapsed]);
 	}
 
 	function endSong():Void
@@ -1166,7 +1177,7 @@ class PlayState extends MusicBeatState
 			if (boyfriend.animation.name.startsWith('sing') && !boyfriend.animation.name.endsWith('miss'))
 				boyfriend.playAnim('idle');
 
-		playerStrums.forEach(function(spr:FlxSprite)
+		playerStrums.forEach(function(spr:StaticNote)
 		{
 			var noteP:Bool = false;
 			var noteR:Bool = false;
@@ -1191,15 +1202,16 @@ class PlayState extends MusicBeatState
 				spr.animation.play('pressed');
 			if (noteR)
 				spr.animation.play('static');
+		});
 
-			if (spr.animation.name == 'confirm' && !curStage.startsWith('school'))
+		strumLineNotes.forEach(function(spr:StaticNote)
+		{
+			spr.centerOffsets();
+			if (spr.animation.name == 'confirm')
 			{
-				spr.centerOffsets();
 				spr.offset.x -= 13;
 				spr.offset.y -= 13;
 			}
-			else
-				spr.centerOffsets();
 		});
 
 		callOnScripts('keyShit', []);
@@ -1329,6 +1341,22 @@ class PlayState extends MusicBeatState
 				trace('VOCAL RESYNC');
 				resyncVocals();
 			}
+
+		strumLineNotes.forEach(function(spr:StaticNote)
+		{
+			if (!playerStrums.members.contains(spr) && spr.animation.name != 'static')
+			{
+				if (spr.confirmTick == 0)
+				{
+					spr.confirmTick = 0;
+					spr.animation.play('static', true);
+				}
+				else
+				{
+					spr.confirmTick++;
+				}
+			}
+		});
 
 		callOnScripts('stepHit', [curStep]);
 	}
