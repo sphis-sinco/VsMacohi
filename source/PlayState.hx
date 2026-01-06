@@ -1,5 +1,6 @@
 package;
 
+import scripting.Script;
 import scripting.SongScript;
 import caching.CacheManager;
 import HealthIcon.HealthIconAnims;
@@ -272,7 +273,7 @@ class PlayState extends MusicBeatState
 			startCountdown();
 
 		super.create();
-		
+
 		callOnScripts('postCreate');
 		cameraFollow(true);
 	}
@@ -1378,6 +1379,9 @@ class PlayState extends MusicBeatState
 
 		returnValues.set('song', songScript.call(method, params));
 
+		for (key => value in Script.callOnMiscScripts(method, params))
+			returnValues.set(key, value);
+
 		return returnValues;
 	}
 
@@ -1389,5 +1393,7 @@ class PlayState extends MusicBeatState
 			char.script.set(vari, value);
 
 		songScript.set(vari, value);
+
+		Script.setOnMiscScripts(vari, value);
 	}
 }

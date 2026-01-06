@@ -1,11 +1,79 @@
 package scripting;
 
+#if sys
+import sys.FileSystem;
+#end
 import scripting.classAlts.ScriptedStd;
 import haxe.Log;
 import crowplexus.iris.Iris;
 
+using StringTools;
+
 class Script extends Iris
 {
+	public static var miscScripts:Array<MiscScript> = [];
+
+	public static function loadMiscScripts()
+	{
+		callOnMiscScripts('destroy');
+
+		for (ms in miscScripts)
+		{
+			ms.destroy();
+			miscScripts.remove(ms);
+		}
+
+		var readDir:Dynamic;
+		readDir = function(dir:String)
+		{
+			var dirContent:Array<String> = [];
+
+			#if sys
+			try
+			{
+				dirContent = FileSystem.readDirectory(dir);
+			}
+			catch (e)
+			{
+				trace(e);
+				dirContent = [];
+			}
+			#end
+
+			for (content in dirContent)
+			{
+				if (content.endsWith('.hxc') #if sys && !FileSystem.isDirectory(dir + '/' + content) #end)
+				{
+					var newMiscScript:MiscScript = new MiscScript(content.replace('.hxc', ''), dir + '/');
+					miscScripts.push(newMiscScript);
+				}
+				else
+				{
+					#if sys
+					if (FileSystem.isDirectory(dir + '/' + content))
+						readDir(dir + '/' + content);
+					#end
+				}
+			}
+		}
+	}
+
+	public static function callOnMiscScripts(method:String, ?params:Array<Dynamic>):Map<String, Dynamic>
+	{
+		var returnValues:Map<String, Dynamic> = [];
+
+		for (ms in miscScripts)
+			returnValues.set(ms.config.name, ms.call(method, params));
+
+		return returnValues;
+	}
+
+	public static function setOnMiscScripts(vari:String, value:Dynamic)
+	{
+		for (ms in miscScripts)
+			ms.set(vari, value);
+	}
+
 	override public function new(path:String, scriptName:String)
 	{
 		if (!path.hxc().assetExists())
@@ -81,6 +149,12 @@ class Script extends Iris
 			"Conductor" => Conductor,
 
 			"CoolUtil" => CoolUtil,
+
+			"CharacterScript" => CharacterScript,
+			"MiscScript" => MiscScript,
+			"Script" => Script,
+			"SongScript" => SongScript,
+			"StageScript" => StageScript,
 		];
 	}
 

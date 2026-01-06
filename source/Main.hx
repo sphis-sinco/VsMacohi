@@ -1,5 +1,6 @@
 package;
 
+import scripting.Script;
 import characters.Character;
 import flixel.FlxG;
 import caching.ImageCacher;
@@ -91,11 +92,14 @@ class Main extends Sprite
 			}
 			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.P)
 			{
-				trace('resetState');
+				trace('reset');
+
+				Script.loadMiscScripts();
 				FlxG.resetState();
 			}
 		});
 
+		Script.loadMiscScripts();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
 
 		#if !mobile
