@@ -1,0 +1,14 @@
+var newUISongs:Array<String> = ['melo tick'];
+
+function create()
+{
+	if (Std.isOfType(FlxG.state, PlayState))
+	{
+		trace('IN DA PLAYSTATE');
+
+		if (newUISongs.contains(PlayState.SONG.song))
+		{
+			trace('USE DA NEW UI FOR :' + PlayState.SONG.song);
+		}
+	}
+}

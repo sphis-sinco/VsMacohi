@@ -114,7 +114,6 @@ class Script extends Iris
 			"FlxSprite" => flixel.FlxSprite,
 			"FlxBasic" => flixel.FlxBasic,
 			"FlxCamera" => flixel.FlxCamera,
-			"state" => flixel.FlxG.state,
 			"FlxEase" => flixel.tweens.FlxEase,
 			"FlxTween" => flixel.tweens.FlxTween,
 			"FlxSound" => flixel.sound.FlxSound,
