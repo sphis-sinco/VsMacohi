@@ -7,7 +7,7 @@
 	"animations": [
 		{
 			"flipX": false,
-			"prefix": "macohi IDLE",
+			"prefix": "MACOHI IDLE",
 			"name": "idle",
 			"offsets": [
 				0,
@@ -20,7 +20,7 @@
 		},
 		{
 			"flipX": false,
-			"prefix": "macohi LEFT0",
+			"prefix": "MACOHI LEFT0",
 			"name": "singLEFT",
 			"offsets": [
 				0,
@@ -33,7 +33,7 @@
 		},
 		{
 			"flipX": false,
-			"prefix": "macohi DOWN0",
+			"prefix": "MACOHI DOWN0",
 			"name": "singDOWN",
 			"offsets": [
 				0,
@@ -46,7 +46,7 @@
 		},
 		{
 			"flipX": false,
-			"prefix": "macohi UP0",
+			"prefix": "MACOHI UP0",
 			"name": "singUP",
 			"offsets": [
 				0,
@@ -59,7 +59,7 @@
 		},
 		{
 			"flipX": false,
-			"prefix": "macohi RIGHT0",
+			"prefix": "MACOHI RIGHT0",
 			"name": "singRIGHT",
 			"offsets": [
 				0,
