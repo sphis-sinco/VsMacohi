@@ -140,10 +140,10 @@ class FreeplayState extends MusicBeatState
 		if (controls.RIGHT_P)
 			changeDiff(1);
 
+		#if NOT_ONLY_FREEPLAY
 		if (controls.BACK)
-		{
 			FlxG.switchState(() -> new MainMenuState());
-		}
+		#end
 
 		if (accepted)
 		{

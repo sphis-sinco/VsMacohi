@@ -44,9 +44,6 @@
 
 	<library name="default"	preload="true" />
 
-	<define name="INCLUDE_WEEK1" if="debug" unless="DONT_INCLUDE_WEEK1"/>
-	<assets path="dev/week1" rename="assets" library="default" if="INCLUDE_WEEK1"/>
-
 	<assets path="assets/data" library="default" />
 	<assets path="assets/images" library="default" />
 
@@ -124,5 +121,10 @@
 	<icon path="assets/images/appicons/icon64.png" size='64'/>
 	<icon path="assets/images/appicons/iconOG.png"/>
 
+	<define name="NOT_ONLY_FREEPLAY" if="debug"/>
+	<define name="ONLY_FREEPLAY" unless="NOT_ONLY_FREEPLAY"/>
+
+	<define name="INCLUDE_WEEK1" if="debug" unless="DONT_INCLUDE_WEEK1"/>
+	<assets path="dev/week1" rename="assets" library="default" if="INCLUDE_WEEK1"/>
 
 </project>

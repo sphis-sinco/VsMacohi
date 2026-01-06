@@ -23,7 +23,7 @@ class MainMenuState extends MusicBeatState
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
-	var optionShit:Array<String> = ['freeplay'];
+	var optionShit:Array<String> = ['story mode', 'freeplay'];
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
