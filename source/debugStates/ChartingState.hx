@@ -485,6 +485,8 @@ class ChartingState extends MusicBeatState
 		return daPos;
 	}
 
+	
+	var lastConductorPos:Float;
 	override function update(elapsed:Float)
 	{
 		curStep = recalculateSteps();
@@ -493,22 +495,29 @@ class ChartingState extends MusicBeatState
 		_song.song = typingShit.text;
 
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
+		var playedSound:Array<Bool> = [false, false, false, false];
 		for (note in curRenderedNotes)
 		{
-			var noteNStrumlineYDiff = Math.abs(note.y - strumLine.y);
+			note.alpha = 1;
 
-			note.mustPress = noteNStrumlineYDiff < 30 || strumLine.y > note.y;
-			var colorThingy = Std.int(255 - noteNStrumlineYDiff);
-
-			if (note.mustPress)
-				note.color = FlxColor.fromRGB(255, 255, 255);
-			else
-				note.color = FlxColor.fromRGB(colorThingy, colorThingy, colorThingy);
-
-			if (FlxG.sound.music.playing)
+			if (note.strumTime <= Conductor.songPosition)
 			{
-				if (noteNStrumlineYDiff == 0)
-					FlxG.sound.play('hitsound'.sound());
+				note.alpha = 0.5;
+				if (note.strumTime > lastConductorPos && FlxG.sound.music.playing && note.noteData > -1)
+				{
+					var data:Int = note.noteData % 4;
+					if (!playedSound[data])
+					{
+						var soundToPlay = 'hitsound';
+
+						FlxG.sound.play(Paths.sound(soundToPlay)).pan = note.noteData < 4 ? -0.3 : 0.3; // would be coolio
+						playedSound[data] = true;
+
+						data = note.noteData;
+						if (note.mustPress != _song.notes[curSection].mustHitSection)
+							data += 4;
+					}
+				}
 			}
 		}
 
@@ -599,12 +608,12 @@ class ChartingState extends MusicBeatState
 			{
 				UI_box.selected_tab -= 1;
 				if (UI_box.selected_tab < 0)
-					UI_box.selected_tab = 2;
+					UI_box.selected_tab = 3;
 			}
 			else
 			{
 				UI_box.selected_tab += 1;
-				if (UI_box.selected_tab >= 3)
+				if (UI_box.selected_tab >= 4)
 					UI_box.selected_tab = 0;
 			}
 		}
@@ -688,6 +697,9 @@ class ChartingState extends MusicBeatState
 			+ Std.string(FlxMath.roundDecimal(FlxG.sound.music.length / 1000, 2))
 			+ "\nSection: "
 			+ curSection;
+			
+			
+		lastConductorPos = Conductor.songPosition;
 		super.update(elapsed);
 	}
 
