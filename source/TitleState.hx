@@ -69,6 +69,8 @@ class TitleState extends MusicBeatState
 
 		#if ANIMATION_DEBUG
 		FlxG.switchState(() -> new AnimationDebug('boy-regular'));
+		#elseif SKIP_TITLE
+		FlxG.switchState(() -> new MainMenuState());
 		#elseif FREEPLAY
 		FlxG.switchState(() -> new FreeplayState());
 		#elseif CHARTING
