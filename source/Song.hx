@@ -88,7 +88,7 @@ class Song
 		if (path != null && path.assetExists())
 		{
 			trace('saving to $path');
-			File.saveContent(path, Json.stringify(swagShit, '\t'));
+			File.saveContent(path, Json.stringify({song: swagShit}, '\t'));
 		}
 		#end
 		trace('converted');
