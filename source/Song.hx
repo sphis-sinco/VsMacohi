@@ -44,16 +44,14 @@ class Song
 		this.bpm = bpm;
 	}
 
-	public static function loadFromJson(songNAME:String, songJSON:String):SwagSong
+	public static function loadFromJson(jsonInput:String):SwagSong
 	{
-		var path:String = 'songs/$songNAME/$songJSON'.json();
-
-		var rawJson = path.getTextContent().trim();
+		var rawJson = (((Highscore.unformatSong(jsonInput)).songJson()).getTextContent()).trim();
 
 		while (!rawJson.endsWith("}"))
 			rawJson = rawJson.substr(0, rawJson.length - 1);
 
-		return parseJSONshit(rawJson, path);
+		return parseJSONshit(rawJson, Highscore.unformatSong(jsonInput).songJson());
 	}
 
 	public static function parseJSONshit(rawJson:String, ?path:String):SwagSong
@@ -62,9 +60,9 @@ class Song
 		var swagShit:SwagSong;
 
 		if (Reflect.hasField(rawJsonJson, 'bpm'))
-			swagShit = cast(rawJsonJson);
+			swagShit = cast (rawJsonJson);
 		else
-			swagShit = cast(rawJsonJson).song;
+			swagShit = cast (rawJsonJson).song;
 		swagShit.validScore = true;
 
 		convertChart(swagShit, path);
@@ -74,14 +72,7 @@ class Song
 
 	public static function convertChart(swagShit:SwagSong, ?path:String)
 	{
-		try
-		{
-			trace('converting ${swagShit.song} from SCV${swagShit.songChartVersion} to SCV${songChartVersion}');
-		}
-		catch (e)
-		{
-			trace(swagShit);
-		}
+		trace('converting ${swagShit.song} from SCV${swagShit.songChartVersion} to SCV${songChartVersion}');
 
 		if (swagShit.songChartVersion == 1.0 || swagShit.songChartVersion == null)
 			swagShit.stage = 'stage';
