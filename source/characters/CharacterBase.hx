@@ -40,10 +40,8 @@ class CharacterBase extends FlxSprite
 	{
 		if (!curCharacter.startsWith('bf'))
 		{
-			if (animation.name.startsWith('sing'))
-			{
+			if (animation?.name.startsWith('sing'))
 				holdTimer += elapsed;
-			}
 
 			var dadVar:Float = 4;
 
