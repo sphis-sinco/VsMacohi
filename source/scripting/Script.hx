@@ -1,5 +1,6 @@
 package scripting;
 
+import scripting.classAlts.ScriptedStd;
 import haxe.Log;
 import crowplexus.iris.Iris;
 
@@ -21,7 +22,7 @@ class Script extends Iris
 	{
 		return [
 			// Haxe related stuff
-			"Std" => Std,
+			"Std" => ScriptedStd,
 			"Math" => Math,
 			"Reflect" => Reflect,
 			"StringTools" => StringTools,
@@ -33,7 +34,9 @@ class Script extends Iris
 			"Main" => Main,
 			"window" => lime.app.Application.current.window,
 
-			'trace' => Log.trace,
+			#if !hscriptPos
+			'trace' => Iris.print,
+			#end
 
 			// Flixel related stuff
 			"FlxG" => flixel.FlxG,

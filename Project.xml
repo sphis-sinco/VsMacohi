@@ -128,4 +128,6 @@
 	<define name="INCLUDE_WEEK1" if="debug" unless="DONT_INCLUDE_WEEK1"/>
 	<assets path="dev/week1" rename="assets" library="default" if="INCLUDE_WEEK1"/>
 
+	<define name="hscriptPos" />
+
 </project>
