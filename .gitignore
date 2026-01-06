@@ -3,3 +3,5 @@ export/
 .haxelib/
 APIStuff.hx
 RECOVER_**.fla
+
+Backup/
