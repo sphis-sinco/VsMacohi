@@ -60,7 +60,7 @@ class Song
 	public static function parseJSONshit(rawJson:String, ?path:String):SwagSong
 	{
 		var rawJsonJson = Json.parse(rawJson);
-		var swagShit:SwagSong = cast(rawJsonJson).song;
+		var swagShit:SwagSong = (!Std.isOfType(cast(rawJsonJson).song, String)) ? cast(rawJsonJson).song : cast(rawJsonJson);
 		swagShit.validScore = true;
 
 		convertChart(swagShit, path);
