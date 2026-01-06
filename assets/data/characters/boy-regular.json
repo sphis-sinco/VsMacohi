@@ -75,9 +75,7 @@
 			"flipY": false,
 			"type": "prefix",
 			"frameRate": 24
-		}
-
-		,
+		},
 		{
 			"flipX": false,
 			"prefix": "BOY LEFT MISS0",

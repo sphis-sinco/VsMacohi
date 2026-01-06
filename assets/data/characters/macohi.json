@@ -1,0 +1,74 @@
+{
+	"flipX": false,
+	"notes": [],
+	"atlasPath": "characters/macohi",
+	"flipY": false,
+	"iconPath": "macohi",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "macohi IDLE",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": true,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "macohi LEFT0",
+			"name": "singLEFT",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "macohi DOWN0",
+			"name": "singDOWN",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "macohi UP0",
+			"name": "singUP",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "macohi RIGHT0",
+			"name": "singRIGHT",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"type": "prefix",
+			"frameRate": 24
+		}
+	]
+}
