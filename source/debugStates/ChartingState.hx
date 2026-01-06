@@ -159,6 +159,8 @@ class ChartingState extends MusicBeatState
 		add(rightSide);
 		updateSideTexts();
 
+		changeSection(0);
+
 		super.create();
 	}
 
