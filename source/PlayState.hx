@@ -2,7 +2,6 @@ package;
 
 import scripting.Script;
 import scripting.SongScript;
-import caching.CacheManager;
 import HealthIcon.HealthIconAnims;
 import scripting.StageScript;
 import caching.AudioCacher;
@@ -117,8 +116,6 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		CacheManager.freeMemory();
-
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();

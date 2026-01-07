@@ -1,6 +1,5 @@
 package;
 
-import caching.CacheManager;
 import global.SongList;
 import caching.AudioCacher;
 import flash.text.TextField;
@@ -33,8 +32,6 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		CacheManager.freeMemory();
-
 		songs = SongList.get;
 
 		// LOAD MUSIC

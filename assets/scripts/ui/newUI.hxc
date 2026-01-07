@@ -1,14 +1,41 @@
-var newUISongs:Array<String> = ['melo tick'];
+var newUISongs:Array<String> = ['Melo Tick'];
+var inPlayState:Bool = false;
+var useNewUI:Bool = false;
 
-function stateSwitch()
+function preStateCreate(nextState:FlxState)
 {
-	if (Std.isOfType(FlxG.state, PlayState))
+	inPlayState = Std.isOfType(nextState, PlayState);
+	useNewUI = false;
+
+	if (inPlayState)
 	{
-		trace('IN DA PLAYSTATE');
+		trace('IN DA PLAYSTATE2');
 
 		if (newUISongs.contains(PlayState.SONG.song))
 		{
+			useNewUI = true;
 			trace('USE DA NEW UI FOR :' + PlayState.SONG.song);
 		}
+	}
+}
+
+function generateStaticArrows(player)
+{
+	if (useNewUI)
+	{
+		PlayState.instance.strumLineNotes.forEach(function(note:StaticNote)
+		{
+			if (!PlayState.instance.playerStrums.members.contains(note))
+				note.x = -800;
+			else
+				note.x = (Note.swagWidth * note.ID) + (75 + FlxG.width / 4);
+		});
+	}
+}
+
+function update(elapsed:Float)
+{
+	if (useNewUI && inPlayState)
+	{
 	}
 }

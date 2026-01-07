@@ -1,7 +1,6 @@
 package;
 
 import caching.AudioCacher;
-import caching.CacheManager;
 import debugStates.AnimationDebug;
 import caching.ImageCacher;
 import flixel.sound.FlxSound;
@@ -45,8 +44,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		CacheManager.freeMemory();
-
 		global.WeekList.get;
 		global.SongList.get;
 		global.CharacterList.get;

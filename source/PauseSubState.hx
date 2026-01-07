@@ -1,6 +1,5 @@
 package;
 
-import caching.CacheManager;
 import menus.storymode.StoryMenuState;
 import Controls.Control;
 import flixel.FlxG;
@@ -81,10 +80,8 @@ class PauseSubState extends MusicBeatSubstate
 				case "Resume":
 					close();
 				case "Restart Song":
-					CacheManager.freeMemory();
 					FlxG.resetState();
 				case "Exit to menu":
-					CacheManager.freeMemory();
 					if (PlayState.isStoryMode)
 						FlxG.switchState(() -> new StoryMenuState());
 					else

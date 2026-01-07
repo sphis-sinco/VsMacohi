@@ -1,6 +1,5 @@
 package;
 
-import caching.CacheManager;
 import caching.ImageCacher;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;

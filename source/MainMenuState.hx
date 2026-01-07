@@ -1,6 +1,5 @@
 package;
 
-import caching.CacheManager;
 import menus.storymode.StoryMenuState;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -30,8 +29,6 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-		CacheManager.freeMemory();
-
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
