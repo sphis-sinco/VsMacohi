@@ -89,7 +89,7 @@ class Script extends Iris
 		if (!path.hxc().assetExists())
 			Iris.error('Cannot find script: ' + path.hxc());
 		else
-			Iris.print('Found script: ' + path.hxc());
+			Logger.notice('Found script: ' + path.hxc());
 
 		super(((path.hxc().assetExists()) ? path.hxc().getTextContent() : 'function create() { trace("couldnt find script : ${path.hxc()}"); }'), {
 			name: scriptName
