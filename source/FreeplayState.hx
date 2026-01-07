@@ -1,7 +1,6 @@
 package;
 
 import global.SongList;
-import caching.AudioCacher;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -53,8 +52,6 @@ class FreeplayState extends MusicBeatState
 			// songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			// songText.screenCenter(X);
-
-			AudioCacher.cacheSong(songs[i]);
 		}
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);

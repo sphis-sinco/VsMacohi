@@ -1,6 +1,5 @@
 package;
 
-import caching.ImageCacher;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
 import flixel.addons.transition.FlxTransitionableState;

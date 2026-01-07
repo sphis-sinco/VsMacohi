@@ -1,8 +1,6 @@
 package;
 
-import caching.AudioCacher;
 import debugStates.AnimationDebug;
-import caching.ImageCacher;
 import flixel.sound.FlxSound;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -48,9 +46,6 @@ class TitleState extends MusicBeatState
 		global.SongList.get;
 		global.CharacterList.get;
 		global.StageList.get;
-
-		// AudioCacher.cacheSongs();
-		// ImageCacher.cacheUI();
 
 		PlayerSettings.init();
 

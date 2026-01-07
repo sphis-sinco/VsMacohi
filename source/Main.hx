@@ -6,8 +6,6 @@ import haxe.Log;
 import scripting.Script;
 import characters.Character;
 import flixel.FlxG;
-import caching.ImageCacher;
-import caching.AudioCacher;
 import flixel.FlxSprite;
 import flixel.FlxGame;
 import flixel.FlxState;

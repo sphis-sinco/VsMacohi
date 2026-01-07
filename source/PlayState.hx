@@ -4,7 +4,6 @@ import scripting.Script;
 import scripting.SongScript;
 import HealthIcon.HealthIconAnims;
 import scripting.StageScript;
-import caching.AudioCacher;
 import menus.storymode.StoryMenuState;
 import debugStates.AnimationDebug;
 import debugStates.ChartingState;
@@ -138,7 +137,6 @@ class PlayState extends MusicBeatState
 			SONG = Song.loadFromJson('tutorial', 'tutorial');
 
 		Song.convertChart(SONG);
-		AudioCacher.cacheSong(SONG.song);
 
 		stageScript = new StageScript(SONG.stage);
 		songScript = new SongScript(SONG.song);
