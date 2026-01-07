@@ -30,6 +30,11 @@ function generateStaticArrows(player)
 			else
 				note.x = (Note.swagWidth * note.ID) + (75 + FlxG.width / 4);
 		});
+
+		for (note in PlayState.instance.unspawnNotes) {
+			if (note.noteData < 4)
+				note.x = (Note.swagWidth * note.noteData) + (75 + FlxG.width / 4);
+		};
 	}
 }
 
