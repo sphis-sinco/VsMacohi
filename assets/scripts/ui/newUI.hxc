@@ -1,6 +1,6 @@
 var newUISongs:Array<String> = ['melo tick'];
 
-function switchState()
+function stateSwitch()
 {
 	if (Std.isOfType(FlxG.state, PlayState))
 	{

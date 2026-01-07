@@ -49,7 +49,7 @@ class Script extends Iris
 
 			for (content in dirContent)
 			{
-				if (content.extension() == '.hxc' #if sys && !FileSystem.isDirectory(dir.addTrailingSlash() + content) #end)
+				if (content.extension() == 'hxc' #if sys && !FileSystem.isDirectory(dir.addTrailingSlash() + content) #end)
 				{
 					var newMiscScript:MiscScript = new MiscScript(content.withoutExtension(), dirSplit.join('/').addTrailingSlash());
 					miscScripts.push(newMiscScript);
