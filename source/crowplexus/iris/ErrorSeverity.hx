@@ -11,7 +11,7 @@ enum ErrorSeverity {
 	WARN;
 	ERROR;
 	FATAL;
-    NOTICE
+    NOTICE;
 }
 
 class ErrorSeverityTools implements crowplexus.iris.IrisUsingClass {

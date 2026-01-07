@@ -88,6 +88,11 @@ class Main extends Sprite
 
 		Log.trace = Logger.print;
 
+		FlxG.signals.postStateSwitch.add(function()
+		{
+			Script.callOnMiscScripts('stateSwitch', []);
+		});
+
 		FlxG.signals.postUpdate.add(function()
 		{
 			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.A)
