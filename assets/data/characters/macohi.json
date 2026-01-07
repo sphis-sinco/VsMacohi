@@ -1,74 +1,74 @@
 {
-	"flipX": false,
 	"notes": [],
 	"atlasPath": "characters/macohi",
-	"flipY": false,
 	"iconPath": "macohi",
 	"animations": [
 		{
-			"flipX": false,
 			"prefix": "MACOHI IDLE",
 			"name": "idle",
 			"offsets": [
 				0,
 				0
 			],
-			"looped": true,
-			"flipY": false,
 			"type": "prefix",
-			"frameRate": 24
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"looped": true
 		},
 		{
-			"flipX": false,
 			"prefix": "MACOHI LEFT0",
 			"name": "singLEFT",
 			"offsets": [
-				0,
-				0
+				-38,
+				6
 			],
-			"looped": false,
-			"flipY": false,
 			"type": "prefix",
-			"frameRate": 24
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"looped": false
 		},
 		{
-			"flipX": false,
 			"prefix": "MACOHI DOWN0",
 			"name": "singDOWN",
 			"offsets": [
 				0,
-				0
+				-100
 			],
-			"looped": false,
-			"flipY": false,
 			"type": "prefix",
-			"frameRate": 24
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"looped": false
 		},
 		{
-			"flipX": false,
 			"prefix": "MACOHI UP0",
 			"name": "singUP",
 			"offsets": [
-				0,
-				0
+				-39,
+				7
 			],
-			"looped": false,
-			"flipY": false,
 			"type": "prefix",
-			"frameRate": 24
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"looped": false
 		},
 		{
-			"flipX": false,
 			"prefix": "MACOHI RIGHT0",
 			"name": "singRIGHT",
 			"offsets": [
-				0,
-				0
+				-45,
+				-10
 			],
-			"looped": false,
-			"flipY": false,
 			"type": "prefix",
-			"frameRate": 24
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24,
+			"looped": false
 		}
-	]
+	],
+	"flipX": false,
+	"flipY": false
 }
