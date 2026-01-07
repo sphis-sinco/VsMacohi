@@ -10,21 +10,21 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
 
+using StringTools;
+
 class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 
 	static function getPath(file:String)
 	{
+		if (file.startsWith('assets/'))
+			return file;
+
 		#if TRACE_PATHS
 		trace('assets/$file');
 		#end
 		return 'assets/$file';
-	}
-
-	inline static public function file(file:String)
-	{
-		return getPath(file);
 	}
 
 	inline static public function dataFile(key:String)
@@ -99,12 +99,12 @@ class Paths
 
 	inline static public function getSparrowAtlas(key:String)
 	{
-		return FlxAtlasFrames.fromSparrow(image(key), file('images/$key.xml'));
+		return FlxAtlasFrames.fromSparrow(image(key), getPath('images/$key.xml'));
 	}
 
 	inline static public function getPackerAtlas(key:String)
 	{
-		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), file('images/$key.txt'));
+		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), getPath('images/$key.txt'));
 	}
 
 	static public function getTextContent(path:String):String

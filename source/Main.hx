@@ -1,5 +1,7 @@
 package;
 
+import crowplexus.iris.Iris;
+import haxe.Log;
 import scripting.Script;
 import characters.Character;
 import flixel.FlxG;
@@ -82,6 +84,8 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
+
+		Log.trace = Iris.print;
 
 		FlxG.signals.postUpdate.add(function()
 		{

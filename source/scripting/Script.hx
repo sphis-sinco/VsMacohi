@@ -1,5 +1,7 @@
 package scripting;
 
+using haxe.io.Path;
+
 #if sys
 import sys.FileSystem;
 #end
@@ -27,6 +29,7 @@ class Script extends Iris
 		readDir = function(dir:String)
 		{
 			var dirContent:Array<String> = [];
+			var dirSplit:Array<String> = [];
 
 			#if sys
 			try
@@ -40,19 +43,23 @@ class Script extends Iris
 			}
 			#end
 
+			dirSplit = dir.split('/');
+			dirSplit.remove('assets');
+			dirSplit.remove('scripts');
+
 			for (content in dirContent)
 			{
-				if (content.endsWith('.hxc') #if sys && !FileSystem.isDirectory(dir + '/' + content) #end)
+				if (content.extension() == '.hxc' #if sys && !FileSystem.isDirectory(dir.addTrailingSlash() + content) #end)
 				{
-					var newMiscScript:MiscScript = new MiscScript(content.replace('.hxc', ''), dir + '/');
+					var newMiscScript:MiscScript = new MiscScript(content.withoutExtension(), dirSplit.join('/').addTrailingSlash());
 					miscScripts.push(newMiscScript);
 				}
 				else
 				{
 					#if sys
-					if (FileSystem.isDirectory(dir + '/' + content)
+					if (FileSystem.isDirectory(dir.addTrailingSlash() + content)
 						&& (!['characters', 'songs', 'stages'].contains(content) && dir == 'assets/scripts'))
-						readDir(dir + '/' + content);
+						readDir(dir.addTrailingSlash() + content);
 					#end
 				}
 			}
@@ -80,7 +87,9 @@ class Script extends Iris
 	override public function new(path:String, scriptName:String)
 	{
 		if (!path.hxc().assetExists())
-			trace('Cannot find script: ' + path.hxc());
+			Iris.error('Cannot find script: ' + path.hxc());
+		else
+			Iris.print('Found script: ' + path.hxc());
 
 		super(((path.hxc().assetExists()) ? path.hxc().getTextContent() : 'function create() { trace("couldnt find script : ${path.hxc()}"); }'), {
 			name: scriptName
