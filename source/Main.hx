@@ -88,9 +88,19 @@ class Main extends Sprite
 
 		Log.trace = Logger.print;
 
+		FlxG.signals.preStateSwitch.add(function()
+		{
+			Script.callOnMiscScripts('preStateSwitch', []);
+		});
+
+		FlxG.signals.preStateCreate.add(function(state:FlxState)
+		{
+			Script.callOnMiscScripts('preStateCreate', [state]);
+		});
+
 		FlxG.signals.postStateSwitch.add(function()
 		{
-			Script.callOnMiscScripts('stateSwitch', []);
+			Script.callOnMiscScripts('postStateSwitch', []);
 		});
 
 		FlxG.signals.postUpdate.add(function()
