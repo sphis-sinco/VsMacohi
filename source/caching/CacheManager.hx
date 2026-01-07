@@ -25,7 +25,7 @@ class CacheManager
 	{
 		trace('free memory');
 
-		bitmapDumpCache();
+		// bitmapDumpCache();
 
 		FlxG.bitmap.clearCache();
 		FlxG.bitmap.clearUnused();
