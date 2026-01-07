@@ -32,8 +32,10 @@ function generateStaticArrows(player)
 		});
 
 		for (note in PlayState.instance.unspawnNotes) {
-			if (note.noteData < 4)
+			if (note.noteData < 4 && note.mustPress)
 				note.x = (Note.swagWidth * note.noteData) + (75 + FlxG.width / 4);
+			else
+				note.x = -800;
 		};
 	}
 }
